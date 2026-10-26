@@ -6,7 +6,7 @@ const total=document.querySelector('#total');
 const gallery=document.querySelector('#gallery');
 const status=document.querySelector('#copy-status');
 let activeModel='ninja';
-function getSelection(){const data=new FormData(form);const size=data.get('size');const design=data.get('design');return{model:MODELS[design].name,size,finish:design==='espadas'?'Bordados de pecho y manga incluidos':'Solo DTF',price:PRICES[design]?.[size]??null};}
+function getSelection(){const data=new FormData(form);const size=data.get('size');const design=data.get('design');return{quantity:Number(data.get('quantity')||1),model:MODELS[design].name,size,finish:design==='espadas'?'Bordados de pecho y manga incluidos':'Solo DTF',price:PRICES[design]?.[size]??null};}
 function updatePrice(){
  const selection=getSelection();
  const pending=selection.price===null;
@@ -26,7 +26,7 @@ document.querySelector('#close-gallery').addEventListener('click',()=>gallery.cl
 gallery.addEventListener('close',()=>document.body.classList.remove('modal-open'));
 gallery.addEventListener('click',event=>{const rect=gallery.getBoundingClientRect();if(event.target===gallery&&(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom))gallery.close();});
 document.querySelector('#choose-design').addEventListener('click',()=>{form.elements.design.value=activeModel;updatePrice();gallery.close();document.querySelector('#elige').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});form.elements.design.focus({preventScroll:true});});
-document.querySelector('#copy').addEventListener('click',async()=>{const s=getSelection();const message=`Hola, me interesa una playera de Puntario.\nDiseño: ${s.model}\nTalla: ${s.size}\nAcabado: ${s.finish}\n${s.price===null?'Precio: por consultar.':'Precio del catálogo: $'+s.price+' MXN por playera.'}\n¿Me confirmas disponibilidad y cómo hacer mi pedido?`;try{await navigator.clipboard.writeText(message);status.textContent='Selección copiada. Pégala en tu mensaje.';}catch{const fallback=document.querySelector('#copy-fallback');fallback.value=message;fallback.hidden=false;fallback.focus();fallback.select();status.textContent='Copia este texto para compartir tu elección.';}});
+document.querySelector('#copy').addEventListener('click',async()=>{const quantity=form.querySelector('[name="quantity"]');if(quantity&&!quantity.reportValidity())return;const s=getSelection();const message=`Hola, me interesa una playera de NOCTBIT × Malacate.\nDiseño: ${s.model}\nTalla: ${s.size}\nCantidad: ${s.quantity}\nAcabado: ${s.finish}\n${s.price===null?'Precio: por consultar.':'Precio del catálogo: $'+s.price+' MXN por playera.'}\n¿Me confirmas disponibilidad y cómo hacer mi pedido?`;try{await navigator.clipboard.writeText(message);status.textContent='Selección copiada. Pégala en tu mensaje.';}catch{const fallback=document.querySelector('#copy-fallback');fallback.value=message;fallback.hidden=false;fallback.focus();fallback.select();status.textContent='Copia este texto para compartir tu elección.';}});
 // Carry the chosen product and size from its individual sheet.
 const requested=new URLSearchParams(location.search);
 if(MODELS[requested.get('design')]) form.elements.design.value=requested.get('design');

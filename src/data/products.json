@@ -1,0 +1,171 @@
+[
+  {
+    "key": "ninja",
+    "name": "Ninja",
+    "prices": {
+      "CH": 380,
+      "M": 380,
+      "G": 380,
+      "XL": 420,
+      "2XL": 420,
+      "3XL": 420
+    },
+    "brand": "NOCTBIT",
+    "author": "Seb",
+    "description": "Ninja pixelado en rojo y dorado, con ilustración trasera y detalles en el frente.",
+    "photos": [
+      {
+        "src": "assets/ninja-lookbook-hd.png",
+        "width": 1121,
+        "height": 1403,
+        "alt": "Frente, espalda y detalles",
+        "displaySrc": "assets/ninja-lookbook-hd.webp"
+      },
+      {
+        "src": "assets/ninja-back-hd.png",
+        "width": 1121,
+        "height": 1403,
+        "alt": "Vista trasera",
+        "displaySrc": "assets/ninja-back-hd.webp"
+      },
+      {
+        "src": "assets/ninja-close-hd.png",
+        "width": 843,
+        "height": 1866,
+        "alt": "Frente y acercamiento",
+        "displaySrc": "assets/ninja-close-hd.webp"
+      }
+    ]
+  },
+  {
+    "key": "japones",
+    "name": "Japonés Rojo",
+    "prices": {
+      "CH": 380,
+      "M": 380,
+      "G": 380,
+      "XL": 420,
+      "2XL": 420,
+      "3XL": 420
+    },
+    "brand": "Malacate",
+    "author": "Nai",
+    "description": "Ilustraciones rojas distribuidas en frente, espalda y mangas.",
+    "photos": [
+      {
+        "src": "assets/japones-front-hd.png",
+        "width": 1312,
+        "height": 1199,
+        "alt": "Vista frontal",
+        "displaySrc": "assets/japones-front-hd.webp"
+      },
+      {
+        "src": "assets/japones-back-hd.png",
+        "width": 1312,
+        "height": 1199,
+        "alt": "Vista trasera",
+        "displaySrc": "assets/japones-back-hd.webp"
+      },
+      {
+        "src": "assets/japones-detalle-manga.jpg",
+        "width": 1536,
+        "height": 1404,
+        "alt": "Detalle de manga",
+        "displaySrc": "assets/japones-detalle-manga.webp"
+      },
+      {
+        "src": "assets/japones-detalle-frente.jpg",
+        "width": 1536,
+        "height": 1404,
+        "alt": "Detalle frontal",
+        "displaySrc": "assets/japones-detalle-frente.webp"
+      },
+      {
+        "src": "assets/japones-detalle-espalda.jpg",
+        "width": 1536,
+        "height": 1404,
+        "alt": "Detalle trasero",
+        "displaySrc": "assets/japones-detalle-espalda.webp"
+      }
+    ]
+  },
+  {
+    "key": "espadas",
+    "name": "Espadas",
+    "prices": {
+      "CH": 430,
+      "M": 430,
+      "G": 470,
+      "XL": 470,
+      "2XL": 470,
+      "3XL": 470
+    },
+    "brand": "NOCTBIT",
+    "author": "Seb",
+    "description": "Ilustración trasera, emblema del pecho y detalle de manga. Bordado incluido en el precio.",
+    "photos": [
+      {
+        "src": "assets/espadas-lookbook-original.jpg",
+        "width": 1536,
+        "height": 1404,
+        "alt": "Frente, espalda y detalles",
+        "displaySrc": "assets/espadas-lookbook-original.webp"
+      },
+      {
+        "src": "assets/espadas-back-original.jpg",
+        "width": 1536,
+        "height": 1404,
+        "alt": "Vista trasera",
+        "displaySrc": "assets/espadas-back-original.webp"
+      },
+      {
+        "src": "assets/espadas-detalle-emblema.jpg",
+        "width": 1536,
+        "height": 1536,
+        "alt": "Emblema del pecho",
+        "displaySrc": "assets/espadas-detalle-emblema.webp"
+      },
+      {
+        "src": "assets/espadas-detalle-parche.jpg",
+        "width": 1229,
+        "height": 1536,
+        "alt": "Parche de manga",
+        "displaySrc": "assets/espadas-detalle-parche.webp"
+      }
+    ]
+  },
+  {
+    "key": "juggernaut",
+    "name": "Juggernaut",
+    "prices": {},
+    "brand": "NOCTBIT",
+    "author": "Seb",
+    "description": "Ilustración de gran formato con estética de cómic.",
+    "photos": [
+      {
+        "src": "assets/seb-juggernaut-original.jpg",
+        "width": 1229,
+        "height": 1536,
+        "alt": "Imagen completa",
+        "displaySrc": "assets/seb-juggernaut-original.webp"
+      }
+    ]
+  },
+  {
+    "key": "muertos",
+    "name": "Hora de pan de muerto",
+    "prices": {},
+    "brand": "Malacate",
+    "author": "Nai",
+    "description": "Calaverita, cempasúchil y humor. Diseño de temporada de Día de Muertos.",
+    "photos": [
+      {
+        "src": "assets/nai-dia-de-muertos-original.jpg",
+        "width": 864,
+        "height": 1536,
+        "alt": "Imagen completa",
+        "displaySrc": "assets/nai-dia-de-muertos-original.webp"
+      }
+    ]
+  }
+]

@@ -1,0 +1,47 @@
+.collection-sound{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;background:var(--surface);color:var(--paper);border:1px solid var(--line);font:11px var(--mono);white-space:nowrap}
+.collection-sound:hover{border-color:var(--gold);color:var(--gold)}
+.gallery-tools{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.collection-scene{position:fixed;inset:0;z-index:30;pointer-events:none;overflow:hidden;contain:layout paint;isolation:isolate;animation:scene-veil var(--scene-duration,4.1s) ease both;background:#111719}
+.collection-scene[hidden]{display:none}
+.collection-scene[data-scene=nai]{background:#000;animation:none;opacity:1}
+.collection-scene[data-scene=nai].video-playing{animation:scene-veil var(--scene-duration) ease both}
+.scene-nai-video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+.scene-caption{position:absolute;left:0;right:0;top:61%;z-index:6;text-align:center;color:#fff0de;animation:scene-title var(--scene-duration) ease both;text-shadow:0 3px 20px #110e17}
+.scene-caption span{font:10px var(--mono);letter-spacing:5px;display:block}
+.scene-caption strong{font:clamp(62px,10vw,110px)/1.15 var(--display);display:block;letter-spacing:-2px}
+.scene-caption small{display:block;margin-top:10px;font:12px var(--mono);letter-spacing:1px;color:#f2d8e2}
+.scene-orbit{position:absolute;width:clamp(250px,39vw,440px);aspect-ratio:1;border:1px solid #edb0c13b;border-radius:50%;top:12%;left:50%;transform:translateX(-50%);box-shadow:0 0 100px #efa5b71a}
+.scene-cat{position:absolute;width:clamp(104px,13vw,155px);top:17%;filter:drop-shadow(0 8px 14px #0d08194d);animation:cat-arrive var(--scene-duration) ease both}
+.scene-cat svg,.scene-flower svg{display:block;width:100%;height:auto}
+.cat-left{left:calc(50% - clamp(118px,15vw,180px));--cat-rotate:-8deg}
+.cat-right{right:calc(50% - clamp(118px,15vw,180px));--cat-rotate:8deg;animation-delay:.07s}
+.cat-right>svg{transform:scaleX(-1)}
+.waving-paw{transform-origin:137px 155px;animation:cat-wave .65s ease-in-out 6 alternate}
+.scene-flower{position:absolute;z-index:4;left:var(--x);top:-12%;width:var(--size);height:var(--size);animation:flower-fall 3.8s var(--delay) ease-in both;filter:drop-shadow(0 2px 4px #27102340)}
+@keyframes scene-veil{0%{opacity:0}10%,81%{opacity:1}100%{opacity:0}}
+@keyframes scene-title{0%,15%{opacity:0;transform:translateY(12px)}30%,80%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-8px)}}
+@keyframes cat-arrive{0%{opacity:0;transform:translateY(35px) rotate(var(--cat-rotate))}22%,82%{opacity:1;transform:translateY(0) rotate(0)}100%{opacity:0;transform:translateY(-12px)}}
+@keyframes cat-wave{from{transform:rotate(-7deg)}to{transform:rotate(10deg)}}
+@keyframes flower-fall{0%{transform:translate3d(0,0,0) rotate(0);opacity:0}12%,85%{opacity:.94}100%{transform:translate3d(var(--drift),115vh,0) rotate(var(--turn));opacity:0}}
+/* Reconstructed scenery from behind the shirt's ninja. */
+:root[data-designer=seb] .hero{background-image:linear-gradient(90deg,#0d1719ed,#111b1a70),url('assets/seb-moon-landscape.webp');background-position:center}
+[data-scene=seb] .scene-caption{top:auto;bottom:10%;text-shadow:0 2px 18px #000,0 0 55px #000}
+[data-scene=seb] .scene-caption strong{font-size:clamp(58px,8vw,90px)}
+.scene-landscape{position:absolute;inset:-3%;animation:landscape-drift var(--scene-duration) ease-out both}
+.scene-landscape img{width:100%;height:100%;object-fit:cover;object-position:65% 45%}
+.scene-landscape::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#081012bd,transparent 47%),linear-gradient(90deg,#08101226,transparent 60%)}
+.scene-foliage{position:absolute;inset:-3%;background:url('assets/seb-moon-landscape.webp') 65% 45%/cover;clip-path:polygon(0 0,45% 0,40% 28%,29% 40%,0 56%);transform-origin:0 25%;animation:pine-wind 1.8s ease-in-out infinite alternate}
+.scene-moonlight{position:absolute;inset:0;background:radial-gradient(ellipse at 80% 17%,#ebda9d26,transparent 30%);animation:moon-glow 2.4s ease-in-out infinite alternate}
+.scene-mist{position:absolute;left:-25%;width:150%;height:24%;background:radial-gradient(ellipse at 28% 50%,#d0d8c925,transparent 48%),radial-gradient(ellipse at 72% 50%,#b9ccc026,transparent 44%);filter:blur(10px);animation:mist-wind var(--scene-duration) ease both}
+.mist-back{top:35%}.mist-front{top:63%;animation-direction:reverse;opacity:.65}
+.scene-landscape-petal{position:absolute;z-index:4;left:var(--x);top:-5%;width:var(--size);height:calc(var(--size)*.6);animation:landscape-petal 4.5s var(--delay) linear both}
+.scene-landscape-petal i{display:block;width:100%;height:100%;border-radius:70% 15% 70% 20%;background:#dfb1ac;box-shadow:inset 0 -2px #a77178;transform:rotate(25deg)}
+.scene-landscape-petal:nth-child(3n) i{background:#b6b693;box-shadow:inset 0 -2px #6f7d62}
+@keyframes landscape-drift{from{transform:scale(1.025) translateX(-.5%)}to{transform:scale(1.075) translateX(.5%)}}
+@keyframes pine-wind{from{transform:rotate(-.25deg) translateX(-1px)}to{transform:rotate(.4deg) translateX(2px)}}
+@keyframes moon-glow{from{opacity:.5}to{opacity:1}}
+@keyframes mist-wind{from{transform:translateX(-5%)}to{transform:translateX(12%)}}
+@keyframes landscape-petal{0%{transform:translate(0,0) rotate(0);opacity:0}15%,80%{opacity:.75}100%{transform:translate(calc(var(--drift) + 100px),110vh) rotate(var(--turn));opacity:0}}
+@media(max-width:700px){.gallery-tools{justify-content:space-between;width:100%;gap:10px}.collection-sound{font-size:10px;padding:8px 10px}.scene-cat{top:23%;width:clamp(108px,28vw,145px)}.scene-caption{top:61%}.scene-landscape img{object-position:78% 45%}.scene-foliage{background-position:78% 45%;clip-path:polygon(0 0,35% 0,25% 20%,0 35%)}[data-scene=seb] .scene-caption{bottom:15%}}
+@media(max-height:500px){.scene-cat{width:85px;top:8%}.scene-caption{top:60%}.scene-caption strong{font-size:42px}.scene-caption small{margin-top:2px}[data-scene=seb] .scene-caption{bottom:7%}}
+@media(prefers-reduced-motion:reduce){.collection-scene{display:none!important}}

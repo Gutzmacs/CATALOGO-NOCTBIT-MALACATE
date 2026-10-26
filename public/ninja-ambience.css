@@ -1,0 +1,18 @@
+#gallery.ninja-world{background:#14191a;border-color:#978252;isolation:isolate;--gold:#e5c98c;--muted:#c4c0ab;--line:#655d49}
+.ninja-world::backdrop{background:radial-gradient(ellipse at 70% 20%,#343a35ed,#080d10f5)}
+.ninja-atmosphere{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1;background:radial-gradient(circle at 85% 12%,#d8bd7220,transparent 24%),linear-gradient(155deg,#252d2b,#101516 80%)}
+.ninja-brush{position:absolute;top:5%;left:-20%;width:150%;height:27%;transform:rotate(-18deg);opacity:.28;background:repeating-linear-gradient(2deg,transparent 0 3px,#7e2025 4px 12px,#a72b30 13px 22px);clip-path:polygon(0 16%,90% 0,100% 12%,93% 26%,100% 36%,94% 48%,100% 69%,87% 92%,0 100%)}
+.ninja-haze{position:absolute;inset:0;opacity:.4;background:radial-gradient(ellipse at 25% 34%,#d8dbc014,transparent 45%),radial-gradient(ellipse at 80% 72%,#e4d7aa18,transparent 35%);animation:ninja-breeze 16s ease-in-out infinite alternate}
+.ninja-leaf{position:absolute;left:var(--left);top:-5%;width:var(--size);height:calc(var(--size)*1.25);color:#bd4044;animation:ninja-leaves var(--duration) var(--delay) linear infinite}
+.ninja-leaf:nth-of-type(3n){color:#d6b772}.ninja-leaf svg{width:100%;height:100%}
+.ninja-world .gallery-content{background:#080d0f66;border:1px solid #b2945130}
+.ninja-world .gallery-tabs button{background:#202927;color:#d1cab8;border-color:#53594c}
+.ninja-world .gallery-tabs button[aria-pressed=true]{background:#44352b;border-color:#c9ab70;color:#f4d79e}
+.ninja-world .gallery-content figcaption{background:#101718d9;padding:8px}
+.ninja-soundbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 20px;padding:14px 16px;border:1px solid #b6985940;background:#111b1ad9;color:#e5c98c;font:10px/1.7 var(--mono);letter-spacing:1px}
+.ninja-soundbar small{display:block;color:#c4c0ab;font:11px/1.7 var(--sans);letter-spacing:0}
+.ninja-soundbar button{min-height:44px;padding:9px 13px;border:1px solid #9f895a;background:#29332e;color:#f0dcac;font:11px var(--mono);letter-spacing:0}
+@keyframes ninja-breeze{from{transform:translateX(-10%)}to{transform:translateX(10%)}}
+@keyframes ninja-leaves{0%{transform:translate(0,-20px) rotate(-30deg);opacity:0}12%,80%{opacity:.4}100%{transform:translate(100px,100vh) rotate(230deg);opacity:0}}
+@media(max-width:600px){.ninja-soundbar{flex-wrap:wrap;gap:9px;padding:12px}.ninja-soundbar button{width:100%}}
+@media(prefers-reduced-motion:reduce){.ninja-haze,.ninja-leaf{animation:none}.ninja-leaf{display:none}}

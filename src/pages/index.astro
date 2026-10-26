@@ -1,0 +1,24 @@
+---
+import Page from '../layouts/Page.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Collection from '../components/Collection.astro';
+import Prices from '../components/Prices.astro';
+import OrderSelector from '../components/OrderSelector.astro';
+import Adventure from '../components/Adventure.astro';
+import Footer from '../components/Footer.astro';
+---
+<Page title="Puntario · NOCTBIT y Malacate" description="Playeras de NOCTBIT y Malacate. Explora fotos, tallas y precios, y pide por WhatsApp." styles={["styles.css", "designers.css?v=brands-2", "collection-scenes.css?v=nai-video-1", "ninja-ambience.css", "product-first.css?v=header-logos-1"]} scripts={["app.js?v=fichas-1", "adventure.js", "collection-scenes.js?v=moon-short-2", "designers.js?v=embedded-2", "ninja-ambience.js"]}>
+<div class="topline">PLAYERAS 100% ALGODÓN <span>◆</span> GRÁFICOS CON CARÁCTER <span>◆</span> CORTE OVERSIZE</div>
+<Header />
+<main>
+<Hero />
+<div aria-hidden="true" class="ribbon"><span>NINJA</span><b>✦</b><span>JAPONÉS ROJO</span><b>✦</b><span>ESPADAS</span><b>✦</b><span>OVERSIZE</span><b>✦</b></div>
+<Collection />
+<Prices />
+<OrderSelector />
+<Adventure />
+</main>
+<Footer />
+<dialog aria-labelledby="gallery-title" id="gallery"><div class="dialog-head"><div><p class="eyebrow">EXPLORA EL DISEÑO</p><h2 id="gallery-title">Ninja</h2></div><button aria-label="Cerrar galería" class="close" id="close-gallery">×</button></div><div class="gallery-content" id="gallery-content"></div><div class="dialog-bottom"><span>Imágenes de la colección</span><button class="button dark" id="choose-design">Elegir este diseño ↗</button></div></dialog>
+</Page>

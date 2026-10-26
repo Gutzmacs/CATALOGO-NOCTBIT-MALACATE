@@ -161,7 +161,14 @@
   {
     "key": "muertos",
     "name": "Hora de pan de muerto",
-    "prices": {},
+    "prices": {
+      "CH": 350,
+      "M": 350,
+      "G": 350,
+      "XL": 380,
+      "2XL": 380,
+      "3XL": 380
+    },
     "brand": "Malacate",
     "author": "Nai",
     "description": "Calaverita, cempasúchil y humor. Diseño de temporada de Día de Muertos.",

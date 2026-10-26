@@ -1,0 +1,1 @@
+{"level":{"file_path":"res://world/level_one.tscn"},"player":{"max_health":4,"max_missiles":0,"x":497.925445556641,"y":27.9965801239014}}

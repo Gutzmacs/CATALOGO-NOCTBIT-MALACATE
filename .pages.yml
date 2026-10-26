@@ -1,0 +1,138 @@
+{
+  "media": {
+    "input": "public/assets",
+    "output": "assets",
+    "extensions": [
+      "png",
+      "jpg",
+      "jpeg",
+      "webp"
+    ],
+    "rename": "safe"
+  },
+  "content": [
+    {
+      "name": "catalogo",
+      "label": "Productos y precios",
+      "type": "file",
+      "path": "src/data/products.json",
+      "format": "json",
+      "list": true,
+      "fields": [
+        {
+          "name": "key",
+          "label": "Identificador (sin espacios)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "name",
+          "label": "Nombre",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "brand",
+          "label": "Marca",
+          "type": "select",
+          "options": {
+            "values": [
+              "NOCTBIT",
+              "Malacate"
+            ]
+          },
+          "required": true
+        },
+        {
+          "name": "author",
+          "label": "Creador",
+          "type": "select",
+          "options": {
+            "values": [
+              "Seb",
+              "Nai"
+            ]
+          },
+          "required": true
+        },
+        {
+          "name": "description",
+          "label": "Descripción",
+          "type": "text"
+        },
+        {
+          "name": "prices",
+          "label": "Precios en MXN (vacío = consultar)",
+          "type": "object",
+          "fields": [
+            {
+              "name": "CH",
+              "label": "CH",
+              "type": "number"
+            },
+            {
+              "name": "M",
+              "label": "M",
+              "type": "number"
+            },
+            {
+              "name": "G",
+              "label": "G",
+              "type": "number"
+            },
+            {
+              "name": "XL",
+              "label": "XL",
+              "type": "number"
+            },
+            {
+              "name": "2XL",
+              "label": "2XL",
+              "type": "number"
+            },
+            {
+              "name": "3XL",
+              "label": "3XL",
+              "type": "number"
+            }
+          ]
+        },
+        {
+          "name": "photos",
+          "label": "Fotos (la primera aparece en galería)",
+          "type": "object",
+          "list": true,
+          "fields": [
+            {
+              "name": "src",
+              "label": "Imagen original",
+              "type": "image",
+              "required": true
+            },
+            {
+              "name": "alt",
+              "label": "Descripción de la vista",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "width",
+              "type": "number",
+              "hidden": true
+            },
+            {
+              "name": "height",
+              "type": "number",
+              "hidden": true
+            },
+            {
+              "name": "displaySrc",
+              "type": "string",
+              "hidden": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

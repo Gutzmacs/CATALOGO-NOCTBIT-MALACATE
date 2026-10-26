@@ -1,17 +1,18 @@
 'use strict';
-const PRICES={"ninja":{"CH":380,"M":380,"G":380,"XL":420,"2XL":420,"3XL":420},"japones":{"CH":380,"M":380,"G":380,"XL":420,"2XL":420,"3XL":420},"espadas":{"CH":430,"M":430,"G":470,"XL":470,"2XL":470,"3XL":470}};
+const PRICES={"ninja":{"CH":380,"M":380,"G":400,"XL":420,"2XL":440,"3XL":450},"japones":{"CH":380,"M":380,"G":400,"XL":420,"2XL":440,"3XL":450},"espadas":{"CH":500,"M":500,"G":520,"XL":540,"2XL":560,"3XL":570},"juggernaut":{"CH":380,"M":380,"G":400,"XL":420,"2XL":440,"3XL":450},"muertos":{"CH":350,"M":350,"G":350,"XL":380,"2XL":380,"3XL":380}};
 const MODELS={"ninja":{"name":"Ninja","images":[["ninja-lookbook-hd.webp","Frente, espalda y detalles"],["ninja-back-hd.webp","Vista trasera"],["ninja-close-hd.webp","Frente y acercamiento"]]},"japones":{"name":"Japonés Rojo","images":[["japones-front-hd.webp","Vista frontal"],["japones-back-hd.webp","Vista trasera"],["japones-detalle-manga.webp","Detalle de manga"],["japones-detalle-frente.webp","Detalle frontal"],["japones-detalle-espalda.webp","Detalle trasero"]]},"espadas":{"name":"Espadas","images":[["espadas-lookbook-original.webp","Frente, espalda y detalles"],["espadas-back-original.webp","Vista trasera"],["espadas-detalle-emblema.webp","Emblema del pecho"],["espadas-detalle-parche.webp","Parche de manga"]]},"juggernaut":{"name":"Juggernaut","images":[["seb-juggernaut-original.webp","Imagen completa"]]},"muertos":{"name":"Hora de pan de muerto","images":[["nai-dia-de-muertos-original.webp","Imagen completa"]]}};
 const form=document.querySelector('#config-form');
 const total=document.querySelector('#total');
 const gallery=document.querySelector('#gallery');
 const status=document.querySelector('#copy-status');
 let activeModel='ninja';
-function getSelection(){const data=new FormData(form);const size=data.get('size');const design=data.get('design');return{model:MODELS[design].name,size,finish:design==='espadas'?'Bordado incluido':'Estampado del diseño',price:PRICES[design]?.[size]??null};}
+function getSelection(){const data=new FormData(form);const size=data.get('size');const design=data.get('design');return{model:MODELS[design].name,size,finish:design==='espadas'?'Bordados de pecho y manga incluidos':'Solo DTF',price:PRICES[design]?.[size]??null};}
 function updatePrice(){
  const selection=getSelection();
  const pending=selection.price===null;
  document.querySelector('#finish-description').textContent=pending?'Consulta el precio y la disponibilidad de este diseño en tu talla.':selection.model+' · Talla '+selection.size+' · $'+selection.price+' MXN.';
- document.querySelector('#embroidery-hint').hidden=pending||selection.finish==='Bordado incluido';
+ document.querySelector('#embroidery-hint').hidden=false;
+ document.querySelector('#embroidery-hint').textContent=selection.finish==='Solo DTF'?'Acabado: solo DTF.':'Bordados de pecho y manga incluidos en el precio.';
  total.classList.toggle('price-on-request',pending);
  total.replaceChildren(document.createTextNode(pending?'Consultar precio':'$'+selection.price+' '));
  if(!pending){const unit=document.createElement('small');unit.textContent='MXN';total.append(unit);}

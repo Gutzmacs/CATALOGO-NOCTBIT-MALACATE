@@ -12,7 +12,7 @@
     },
     "brand": "NOCTBIT",
     "author": "Seb",
-    "description": "Ninja pixelado en rojo y dorado, con ilustración trasera y detalles en el frente.",
+    "description": "Solo DTF. Ninja pixelado en rojo y dorado, con ilustración trasera y detalles en el frente.",
     "photos": [
       {
         "src": "assets/ninja-lookbook-hd.png",
@@ -50,7 +50,7 @@
     },
     "brand": "Malacate",
     "author": "Nai",
-    "description": "Ilustraciones rojas distribuidas en frente, espalda y mangas.",
+    "description": "Solo DTF. Ilustraciones rojas distribuidas en frente, espalda y mangas.",
     "photos": [
       {
         "src": "assets/japones-front-hd.png",
@@ -93,16 +93,16 @@
     "key": "espadas",
     "name": "Espadas",
     "prices": {
-      "CH": 430,
-      "M": 430,
-      "G": 470,
-      "XL": 470,
-      "2XL": 470,
-      "3XL": 470
+      "CH": 500,
+      "M": 500,
+      "G": 520,
+      "XL": 540,
+      "2XL": 560,
+      "3XL": 570
     },
     "brand": "NOCTBIT",
     "author": "Seb",
-    "description": "Ilustración trasera, emblema del pecho y detalle de manga. Bordado incluido en el precio.",
+    "description": "Ilustración trasera con bordados de pecho y manga incluidos en el diseño y en el precio.",
     "photos": [
       {
         "src": "assets/espadas-lookbook-original.jpg",
@@ -147,7 +147,7 @@
     },
     "brand": "NOCTBIT",
     "author": "Seb",
-    "description": "Ilustración de gran formato con estética de cómic.",
+    "description": "Solo DTF. Ilustración de gran formato con estética de cómic.",
     "photos": [
       {
         "src": "assets/seb-juggernaut-original.jpg",
@@ -171,7 +171,7 @@
     },
     "brand": "Malacate",
     "author": "Nai",
-    "description": "Calaverita, cempasúchil y humor. Diseño de temporada de Día de Muertos.",
+    "description": "Solo DTF. Calaverita, cempasúchil y humor. Diseño de temporada de Día de Muertos.",
     "photos": [
       {
         "src": "assets/nai-dia-de-muertos-original.jpg",

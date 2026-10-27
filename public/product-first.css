@@ -72,3 +72,8 @@
 .header .brand-switch button:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
 @media(max-width:760px){.header{padding:8px 5% 12px;gap:6px}.header .brand-switch{width:100%;justify-content:center;gap:32px}.header .brand-switch button{min-height:62px;width:94px}.header-logo{width:94px;height:60px}.header-noctbit img{height:54px}.header nav{justify-content:space-evenly;padding-top:6px}}
 @media(prefers-reduced-motion:reduce){.header .brand-switch button{transition:none}}
+
+/* Fit the complete Malacate mark; hide only the separate byline. */
+.collection-brand.nai .brand-art{aspect-ratio:2/1;overflow:visible}
+.collection-brand.nai .brand-art>img,.header-malacate img{position:static;display:block;width:100%;height:auto;max-width:100%;max-height:100%;object-fit:contain;left:auto;top:auto;filter:invert(1);clip-path:polygon(0 0,100% 0,100% 100%,64% 100%,64% 85%,30% 85%,30% 100%,0 100%)}
+.header-malacate{overflow:visible}

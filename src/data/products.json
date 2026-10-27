@@ -2,6 +2,9 @@
   {
     "key": "ninja",
     "name": "Ninja",
+    "brand": "NOCTBIT",
+    "author": "Seb",
+    "description": "Solo DTF. Ninja pixelado en rojo y dorado, con ilustración trasera y detalles en el frente.",
     "prices": {
       "CH": 380,
       "M": 380,
@@ -10,29 +13,26 @@
       "2XL": 440,
       "3XL": 450
     },
-    "brand": "NOCTBIT",
-    "author": "Seb",
-    "description": "Solo DTF. Ninja pixelado en rojo y dorado, con ilustración trasera y detalles en el frente.",
     "photos": [
       {
         "src": "assets/ninja-lookbook-hd.png",
+        "alt": "Frente, espalda y detalles",
         "width": 1121,
         "height": 1403,
-        "alt": "Frente, espalda y detalles",
         "displaySrc": "assets/ninja-lookbook-hd.webp"
       },
       {
         "src": "assets/ninja-back-hd.png",
+        "alt": "Vista trasera",
         "width": 1121,
         "height": 1403,
-        "alt": "Vista trasera",
         "displaySrc": "assets/ninja-back-hd.webp"
       },
       {
         "src": "assets/ninja-close-hd.png",
+        "alt": "Frente y acercamiento",
         "width": 843,
         "height": 1866,
-        "alt": "Frente y acercamiento",
         "displaySrc": "assets/ninja-close-hd.webp"
       }
     ]
@@ -40,6 +40,9 @@
   {
     "key": "japones",
     "name": "Japonés Rojo",
+    "brand": "Malacate",
+    "author": "Nai",
+    "description": "Solo DTF. Ilustraciones rojas distribuidas en frente, espalda y mangas.",
     "prices": {
       "CH": 380,
       "M": 380,
@@ -48,43 +51,40 @@
       "2XL": 440,
       "3XL": 450
     },
-    "brand": "Malacate",
-    "author": "Nai",
-    "description": "Solo DTF. Ilustraciones rojas distribuidas en frente, espalda y mangas.",
     "photos": [
       {
         "src": "assets/japones-front-hd.png",
+        "alt": "Vista frontal",
         "width": 1312,
         "height": 1199,
-        "alt": "Vista frontal",
         "displaySrc": "assets/japones-front-hd.webp"
       },
       {
         "src": "assets/japones-back-hd.png",
+        "alt": "Vista trasera",
         "width": 1312,
         "height": 1199,
-        "alt": "Vista trasera",
         "displaySrc": "assets/japones-back-hd.webp"
       },
       {
         "src": "assets/japones-detalle-manga.jpg",
+        "alt": "Detalle de manga",
         "width": 1536,
         "height": 1404,
-        "alt": "Detalle de manga",
         "displaySrc": "assets/japones-detalle-manga.webp"
       },
       {
         "src": "assets/japones-detalle-frente.jpg",
+        "alt": "Detalle frontal",
         "width": 1536,
         "height": 1404,
-        "alt": "Detalle frontal",
         "displaySrc": "assets/japones-detalle-frente.webp"
       },
       {
         "src": "assets/japones-detalle-espalda.jpg",
+        "alt": "Detalle trasero",
         "width": 1536,
         "height": 1404,
-        "alt": "Detalle trasero",
         "displaySrc": "assets/japones-detalle-espalda.webp"
       }
     ]
@@ -92,6 +92,9 @@
   {
     "key": "espadas",
     "name": "Espadas",
+    "brand": "NOCTBIT",
+    "author": "Seb",
+    "description": "Ilustración trasera con bordados de pecho y manga incluidos en el diseño y en el precio.",
     "prices": {
       "CH": 500,
       "M": 500,
@@ -100,36 +103,33 @@
       "2XL": 560,
       "3XL": 570
     },
-    "brand": "NOCTBIT",
-    "author": "Seb",
-    "description": "Ilustración trasera con bordados de pecho y manga incluidos en el diseño y en el precio.",
     "photos": [
       {
         "src": "assets/espadas-lookbook-original.jpg",
+        "alt": "Frente, espalda y detalles",
         "width": 1536,
         "height": 1404,
-        "alt": "Frente, espalda y detalles",
         "displaySrc": "assets/espadas-lookbook-original.webp"
       },
       {
         "src": "assets/espadas-back-original.jpg",
+        "alt": "Vista trasera",
         "width": 1536,
         "height": 1404,
-        "alt": "Vista trasera",
         "displaySrc": "assets/espadas-back-original.webp"
       },
       {
         "src": "assets/espadas-detalle-emblema.jpg",
+        "alt": "Emblema del pecho",
         "width": 1536,
         "height": 1536,
-        "alt": "Emblema del pecho",
         "displaySrc": "assets/espadas-detalle-emblema.webp"
       },
       {
         "src": "assets/espadas-detalle-parche.jpg",
+        "alt": "Parche de manga",
         "width": 1229,
         "height": 1536,
-        "alt": "Parche de manga",
         "displaySrc": "assets/espadas-detalle-parche.webp"
       }
     ]
@@ -137,6 +137,9 @@
   {
     "key": "juggernaut",
     "name": "Juggernaut",
+    "brand": "NOCTBIT",
+    "author": "Seb",
+    "description": "Solo DTF. Ilustración de gran formato con estética de cómic.",
     "prices": {
       "CH": 380,
       "M": 380,
@@ -145,22 +148,26 @@
       "2XL": 440,
       "3XL": 450
     },
-    "brand": "NOCTBIT",
-    "author": "Seb",
-    "description": "Solo DTF. Ilustración de gran formato con estética de cómic.",
     "photos": [
       {
         "src": "assets/seb-juggernaut-original.jpg",
+        "alt": "Imagen completa",
         "width": 1229,
         "height": 1536,
-        "alt": "Imagen completa",
         "displaySrc": "assets/seb-juggernaut-original.webp"
+      },
+      {
+        "src": "assets/camiseta-negra-con-estampado-de-juggernaut-1.png",
+        "alt": "Frente"
       }
     ]
   },
   {
     "key": "muertos",
     "name": "Hora de pan de muerto",
+    "brand": "Malacate",
+    "author": "Nai",
+    "description": "Solo DTF. Calaverita, cempasúchil y humor. Diseño de temporada de Día de Muertos.",
     "prices": {
       "CH": 350,
       "M": 350,
@@ -169,15 +176,12 @@
       "2XL": 380,
       "3XL": 380
     },
-    "brand": "Malacate",
-    "author": "Nai",
-    "description": "Solo DTF. Calaverita, cempasúchil y humor. Diseño de temporada de Día de Muertos.",
     "photos": [
       {
         "src": "assets/nai-dia-de-muertos-original.jpg",
+        "alt": "Imagen completa",
         "width": 864,
         "height": 1536,
-        "alt": "Imagen completa",
         "displaySrc": "assets/nai-dia-de-muertos-original.webp"
       }
     ]

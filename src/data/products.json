@@ -212,12 +212,12 @@
     "prices": {},
     "photos": [
       {
-        "src": "assets/marco-de-angeles-espalda.png",
+        "src": "assets/marco-de-angeles-espalda-corregida.png",
         "alt": "Vista trasera · marco de ángeles",
         "imageType": "Mockup",
-        "width": 1229,
-        "height": 1536,
-        "displaySrc": "assets/marco-de-angeles-espalda.webp"
+        "width": 1121,
+        "height": 1403,
+        "displaySrc": "assets/marco-de-angeles-espalda-corregida.webp"
       },
       {
         "src": "assets/marco-de-angeles-frente.png",

@@ -1,0 +1,26 @@
+/* Each mobile price keeps its own size label and space. */
+.design-prices table{table-layout:auto;width:100%}
+.design-prices thead th:first-child,.design-prices tbody th:first-child{width:32%}
+.design-prices td{font:400 18px/1.4 var(--sans);white-space:nowrap;padding:18px 6px;font-variant-numeric:tabular-nums}
+.design-prices th{padding-inline:6px}
+.design-prices tbody th[scope=row]{overflow-wrap:anywhere}
+.design-prices tbody th[scope=rowgroup]{width:auto;text-align:left;color:var(--gold);font:12px/1.5 var(--mono)}
+.design-prices td::before{display:none}
+@media(max-width:1000px){
+ .price-section{grid-template-columns:minmax(0,1fr);gap:28px}
+ .price-intro>p:not(.eyebrow),.price-note{max-width:600px}
+ .design-prices{width:100%;padding:20px;min-width:0}
+ .design-prices table,.design-prices tbody{display:block;width:100%}
+ .design-prices thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ .design-prices tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 12px;padding:18px 0;border-bottom:1px solid #604a44}
+ .design-prices th,.design-prices td{width:auto!important;min-width:0;text-align:left;border:0}
+ .design-prices tbody th[scope=row]{grid-column:1/-1;padding:0 0 12px;font:600 16px/1.5 var(--sans);color:var(--paper)}
+ .design-prices tbody th small{font:11px/1.5 var(--sans);margin-top:4px}
+ .design-prices td{display:flex;flex-direction:column;gap:5px;padding:10px 0;font:400 22px/1.3 var(--sans);white-space:normal;overflow-wrap:anywhere}
+ .design-prices td::before{display:block;content:attr(data-size);font:11px/1.4 var(--mono);color:var(--muted)}
+ .design-prices tr:has(th[scope=rowgroup]){display:block;padding:18px 0 8px;border-bottom:0}
+ .design-prices tbody th[scope=rowgroup]{display:block;padding:0;font-size:11px;line-height:1.6}
+ .design-prices .embroidery-note{margin-top:24px}
+ .design-prices .pdf-link{gap:14px;line-height:1.8;overflow-wrap:anywhere}
+}
+@media(max-width:360px){.design-prices{padding:16px}.design-prices tr{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px}.design-prices td{font-size:20px}}

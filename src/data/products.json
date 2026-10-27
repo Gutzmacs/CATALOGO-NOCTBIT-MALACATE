@@ -157,8 +157,12 @@
         "displaySrc": "assets/seb-juggernaut-original.webp"
       },
       {
-        "src": "assets/camiseta-negra-con-estampado-de-juggernaut-1.png",
-        "alt": "Frente"
+        "src": "assets/camiseta-negra-con-estampado-comic.png",
+        "alt": "JGR"
+      },
+      {
+        "src": "assets/camiseta-oversized-negra-con-estampado-comic.png",
+        "alt": "Juger Mujer"
       }
     ]
   },

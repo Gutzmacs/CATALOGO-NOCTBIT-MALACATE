@@ -8,8 +8,10 @@ function updateOrder(){
  if(!Number.isInteger(quantity)||quantity<1||quantity>20){whatsapp.removeAttribute('href');whatsapp.setAttribute('aria-disabled','true');return;}
  whatsapp.removeAttribute('aria-disabled');
  const price=product.prices[size];
+ const add=document.querySelector('[data-add-order]');
+ add.disabled=!price;add.textContent=price?'Agregar a mi pedido ↗':'Consulta el precio antes de agregar';
  document.querySelector('#detail-price').textContent=price?'$'+price+' MXN':'Consultar precio';
- const message=['Hola, me interesa pedir esta playera:', 'Diseño: '+product.name, 'Talla: '+size, 'Cantidad: '+quantity, price?'Precio por playera: $'+price+' MXN. Subtotal: $'+(price*quantity)+' MXN.':'Precio: por consultar.', product.key==='espadas'?'Bordados de pecho y manga incluidos.':'Acabado: solo DTF.', 'Entiendo que la entrega puede tardar hasta 7 días, con disponibilidad por confirmar.', '¿Me confirmas disponibilidad, total y cómo hacer mi pedido?'].join('\n');
+ const message=['Hola, me interesa pedir esta playera:', 'Diseño: '+product.name, 'Talla: '+size, 'Cantidad: '+quantity, price?'Precio por playera: $'+price+' MXN. Subtotal: $'+(price*quantity)+' MXN.':'Precio: por consultar.', product.finish, 'Entiendo que la entrega puede tardar hasta 7 días, con disponibilidad por confirmar.', '¿Me confirmas disponibilidad, total y cómo hacer mi pedido?'].join('\n');
  whatsapp.href='https://wa.me/525636457353?text='+encodeURIComponent(message);
 }
 form.addEventListener('change',updateOrder);

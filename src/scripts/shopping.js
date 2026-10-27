@@ -1,4 +1,5 @@
 import {$cart,cartLines,totalFor,addItem,setQuantity,removeItem,clearCart,orderMessage,productFor} from '../lib/cart.js';
+import {finishFor} from '../lib/product-finish.js';
 const cartDialog=document.querySelector('#order-dialog'),sizeDialog=document.querySelector('#size-dialog');
 const money=value=>new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(value)+' MXN';
 const toast=document.querySelector('#order-toast');let toastTimer;
@@ -15,7 +16,7 @@ function render(){
  const send=document.querySelector('#send-order');send.setAttribute('aria-disabled',String(!lines.length));if(lines.length)send.href='https://wa.me/525636457353?text='+encodeURIComponent(orderMessage());else send.removeAttribute('href');
  for(const line of lines){
   const row=node('article','order-line'),image=node('img','order-image');image.src=line.product.photos[0].displaySrc;image.alt=line.product.name;image.width=76;image.height=90;image.loading='lazy';
-  const info=node('div','order-line-info'),heading=node('h3','',line.product.name),meta=node('p','',line.product.brand+' · Talla '+line.size),finish=node('p','order-finish',line.key==='espadas'?'Pecho y manga bordados incluidos':'Solo DTF'),price=node('p','',money(line.unitPrice)+' por pieza');
+  const info=node('div','order-line-info'),heading=node('h3','',line.product.name),meta=node('p','',line.product.brand+' · Talla '+line.size),finish=node('p','order-finish',finishFor(line.product)),price=node('p','',money(line.unitPrice)+' por pieza');
   const controls=node('div','order-controls');
   for(const delta of [-1,1]){const button=node('button','order-quantity',delta===-1?'−':'+');button.type='button';button.setAttribute('aria-label',(delta===-1?'Reducir':'Aumentar')+' cantidad de '+line.product.name+', talla '+line.size);button.disabled=delta===-1?line.quantity===1:line.quantity===20;button.addEventListener('click',()=>setQuantity(line.key,line.size,line.quantity+delta));controls.append(button);if(delta===-1)controls.append(node('span','order-count',String(line.quantity)))}
   const remove=node('button','shop-text-button','Quitar');remove.type='button';remove.setAttribute('aria-label','Quitar '+line.product.name+', talla '+line.size);remove.addEventListener('click',()=>{removeItem(line.key,line.size);announce('Playera retirada del pedido.');});controls.append(remove);

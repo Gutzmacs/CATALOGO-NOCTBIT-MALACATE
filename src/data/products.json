@@ -199,5 +199,50 @@
         "displaySrc": "assets/nai-dia-de-muertos-original.webp"
       }
     ]
+  },
+  {
+    "key": "marco-de-angeles",
+    "name": "Marco de Ángeles",
+    "brand": "NOCTBIT",
+    "author": "Seb",
+    "description": "Playera negra oversize con un marco de ángeles en la espalda, emblema guinda «SUMMA BLASPHEMIA» en el pecho y detalle de manga.",
+    "fit": "Corte oversize: silueta holgada, hombros caídos y mangas amplias. Confirma las medidas y la disponibilidad de tu talla antes de pedir.",
+    "finishType": "Con bordado",
+    "finish": "Bordado en el pecho y detalle de manga; marco de ángeles en la espalda.",
+    "prices": {},
+    "photos": [
+      {
+        "src": "assets/marco-de-angeles-espalda.png",
+        "alt": "Vista trasera · marco de ángeles",
+        "imageType": "Mockup",
+        "width": 1229,
+        "height": 1536,
+        "displaySrc": "assets/marco-de-angeles-espalda.webp"
+      },
+      {
+        "src": "assets/marco-de-angeles-frente.png",
+        "alt": "Vista frontal · emblema y manga",
+        "imageType": "Mockup",
+        "width": 1229,
+        "height": 1536,
+        "displaySrc": "assets/marco-de-angeles-frente.webp"
+      },
+      {
+        "src": "assets/marco-de-angeles-detalles.png",
+        "alt": "Espalda y acercamientos del diseño",
+        "imageType": "Mockup",
+        "width": 1024,
+        "height": 1536,
+        "displaySrc": "assets/marco-de-angeles-detalles.webp"
+      },
+      {
+        "src": "assets/marco-de-angeles-bordado.png",
+        "alt": "Detalle del bordado del pecho",
+        "imageType": "Mockup",
+        "width": 1401,
+        "height": 1536,
+        "displaySrc": "assets/marco-de-angeles-bordado.webp"
+      }
+    ]
   }
 ]

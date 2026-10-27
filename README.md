@@ -12,7 +12,9 @@ Node.js 24. `npm ci` y `npm run build`. Salida: `dist/`. `npm run dev:astro` ini
 2. Autoriza Pages CMS únicamente para este repositorio.
 3. Selecciona `Gutzmacs/CATALOGO-NOCTBIT-MALACATE`, rama `main`.
 4. En **Productos y precios**, edita nombres, descripciones, precios por talla y fotos. La primera foto es la portada de galería. Los identificadores deben ser únicos, en minúsculas y sin espacios. Marca y creador deben corresponder (NOCTBIT/Seb o Malacate/Nai).
-5. Guarda. El flujo de GitHub Actions valida y compila el catálogo. Los campos vacíos de precio se muestran como «Consultar».
+5. Para agregar un diseño, añade un elemento en **Productos y precios** y completa su identificador único (por ejemplo `marco-de-angeles`), nombre, marca, creador, descripción y corte. Selecciona **Tipo de acabado** y escribe **Detalle del acabado incluido**.
+6. En **Fotos**, añade un elemento por vista, carga o selecciona la imagen y escribe su descripción. Ordena las vistas: la primera será la portada. Subir archivos a Media por sí solo no los conecta con un producto.
+7. Captura los precios por talla; déjalos vacíos si todavía deben consultarse. Guarda el producto y los cambios del catálogo con **Save/Guardar**. El flujo de GitHub Actions valida, compila y publica en https://gutzmacs.github.io/CATALOGO-NOCTBIT-MALACATE/. Espera a que el flujo termine en verde y recarga la web. Los campos vacíos de precio se muestran como «Consultar» y esa talla se consulta por WhatsApp antes de agregarla al carrito.
 
 Las dimensiones y las versiones WebP de fotos se calculan durante la compilación. No borres imágenes usadas por logos, fondos, música o animaciones.
 

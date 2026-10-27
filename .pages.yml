@@ -66,6 +66,23 @@
           "type": "text"
         },
         {
+          "name": "finishType",
+          "label": "Tipo de acabado",
+          "type": "select",
+          "options": {
+            "values": [
+              "Solo DTF",
+              "Con bordado",
+              "Por confirmar"
+            ]
+          }
+        },
+        {
+          "name": "finish",
+          "label": "Detalle del acabado incluido",
+          "type": "text"
+        },
+        {
           "name": "prices",
           "label": "Precios en MXN (vacío = consultar)",
           "type": "object",

@@ -61,6 +61,11 @@
           "type": "text"
         },
         {
+          "name": "fit",
+          "label": "Corte y ajuste (sin inventar medidas)",
+          "type": "text"
+        },
+        {
           "name": "prices",
           "label": "Precios en MXN (vacío = consultar)",
           "type": "object",
@@ -114,6 +119,18 @@
               "label": "Descripción de la vista",
               "type": "string",
               "required": true
+            },
+            {
+              "name": "imageType",
+              "label": "Tipo de imagen (opcional)",
+              "type": "select",
+              "options": {
+                "values": [
+                  "Mockup",
+                  "Fotografía",
+                  "Detalle del diseño"
+                ]
+              }
             },
             {
               "name": "width",

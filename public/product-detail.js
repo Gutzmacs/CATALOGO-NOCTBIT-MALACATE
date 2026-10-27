@@ -15,4 +15,23 @@ function updateOrder(){
 form.addEventListener('change',updateOrder);
 form.addEventListener('submit',event=>event.preventDefault());
 updateOrder();
-document.querySelectorAll('[data-photo]').forEach(button=>button.addEventListener('click',()=>{const image=document.querySelector('#detail-photo');image.src=button.dataset.photo;image.alt=button.dataset.caption+' de '+product.name;image.parentElement.href=button.dataset.photo;document.querySelector('#photo-caption').textContent=button.dataset.caption+' · Toca para ampliar · Desliza entre vistas';document.querySelectorAll('[data-photo]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));}));
+document.querySelectorAll('[data-photo]').forEach(button=>button.addEventListener('click',()=>{
+ const image=document.querySelector('#detail-photo');image.src=button.dataset.photo;image.alt=button.dataset.caption+' de '+product.name;
+ image.width=Number(button.dataset.width);image.height=Number(button.dataset.height);image.parentElement.href=button.dataset.original;
+ document.querySelector('#photo-caption').textContent=button.dataset.caption+' · Toca para ampliar · Desliza entre vistas';
+ const kind=document.querySelector('#photo-kind');kind.textContent=button.dataset.imageType||'';kind.hidden=!button.dataset.imageType;
+ document.querySelectorAll('[data-photo]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+}));
+const shareButton=document.querySelector('#share-product'),shareStatus=document.querySelector('#share-status'),shareUrl=new URL(location.href);
+shareUrl.search='';shareUrl.hash='';
+const shareData={title:product.name+' · '+product.brand,text:'Mira esta playera de '+product.brand+': '+product.name,url:shareUrl.href};
+const shareWhatsapp=document.querySelector('#share-whatsapp');
+shareWhatsapp.href='https://wa.me/?text='+encodeURIComponent(shareData.text+'\n'+shareData.url);shareWhatsapp.hidden=false;
+shareButton.addEventListener('click',async()=>{
+ shareStatus.textContent='';
+ if(typeof navigator.share==='function'){
+  try{await navigator.share(shareData);return;}catch(error){if(error.name==='AbortError')return;}
+ }
+ try{await navigator.clipboard.writeText(shareData.url);shareStatus.textContent='Enlace copiado. Ya puedes compartir esta playera.';}
+ catch{const fallback=document.querySelector('#share-url');fallback.hidden=false;fallback.value=shareData.url;fallback.focus();fallback.select();shareStatus.textContent='Copia este enlace para compartir la playera.';}
+});

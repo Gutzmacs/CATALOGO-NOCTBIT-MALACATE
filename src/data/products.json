@@ -150,21 +150,31 @@
     },
     "photos": [
       {
-        "src": "assets/seb-juggernaut-original.jpg",
-        "alt": "Imagen completa",
-        "width": 1229,
-        "height": 1536,
-        "displaySrc": "assets/seb-juggernaut-original.webp"
-      },
-      {
         "src": "assets/camiseta-negra-con-estampado-comic.png",
-        "alt": "JGR"
+        "alt": "Vista frontal · oversize unisex",
+        "imageType": "Mockup",
+        "width": 1199,
+        "height": 1312,
+        "displaySrc": "assets/camiseta-negra-con-estampado-comic.webp"
       },
       {
         "src": "assets/camiseta-oversized-negra-con-estampado-comic.png",
-        "alt": "Juger Mujer"
+        "alt": "Vista frontal · oversize de mujer",
+        "imageType": "Mockup",
+        "width": 1199,
+        "height": 1312,
+        "displaySrc": "assets/camiseta-oversized-negra-con-estampado-comic.webp"
+      },
+      {
+        "src": "assets/seb-juggernaut-original.jpg",
+        "alt": "Referencia anterior del diseño",
+        "width": 1229,
+        "height": 1536,
+        "displaySrc": "assets/seb-juggernaut-original.webp",
+        "imageType": "Mockup"
       }
-    ]
+    ],
+    "fit": "Estilo oversize: holgado, con hombros caídos y mangas amplias. La galería muestra propuestas unisex y de mujer; confirma el corte disponible y sus medidas antes de pedir."
   },
   {
     "key": "muertos",

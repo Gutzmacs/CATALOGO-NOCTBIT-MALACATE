@@ -7,7 +7,7 @@ const lightbox=new PhotoSwipeLightbox({dataSource:photos,pswpModule:()=>import('
 lightbox.on('uiRegister',()=>{
  lightbox.pswp.ui.registerElement({name:'photo-caption',order:9,isButton:false,appendTo:'root',onInit:(element,pswp)=>{
   element.style.cssText='position:absolute;bottom:20px;left:60px;right:60px;text-align:center;color:white;font:13px/1.6 Arial,sans-serif;pointer-events:none;text-shadow:0 1px 4px black';
-  const update=()=>{element.textContent=pswp.currSlide?.data.alt || '';};pswp.on('change',update);update();
+  const update=()=>{const photo=pswp.currSlide?.data;element.textContent=[photo?.imageType,photo?.alt].filter(Boolean).join(' · ');};pswp.on('change',update);update();
  }});
 });
 lightbox.on('change',()=>{const index=lightbox.pswp.currIndex;if(thumbs[index]) thumbs[index].click();});

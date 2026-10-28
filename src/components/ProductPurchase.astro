@@ -1,0 +1,19 @@
+---
+import products from '../data/products.json';
+const {product=products[0], gallery=false}=Astro.props;
+const id=gallery?'gallery-purchase':`purchase-${product.key}`;
+const sizes=['CH','M','G','XL','2XL','3XL'];
+const prices=Object.values(product.prices);
+---
+<form id={id} class="inline-purchase" data-inline-purchase>
+  <input type="hidden" name="design" value={product.key}/>
+  <label for={`${id}-size`}>Elige tu talla</label>
+  <select id={`${id}-size`} name="size" required aria-label={gallery?'Talla del diseño en la galería':`Talla de ${product.name}`}>
+    <option value="" selected disabled>Selecciona una talla</option>
+    {sizes.map(size=><option value={size}>{size}</option>)}
+  </select>
+  <output data-inline-price aria-live="polite">{prices.length?`Desde $${Math.min(...prices)} MXN`:'Consultar precio'}</output>
+  <p data-inline-hint>{prices.length?'Elige una talla para ver su precio.':'Precio por confirmar. Consulta por WhatsApp.'}</p>
+  <button type="button" class="button dark" data-add-order data-order-form={`#${id}`} disabled>Elige tu talla</button>
+  <a data-inline-consult href={`https://wa.me/525636457353?text=${encodeURIComponent(`Hola, me interesa ${product.name}. ¿Me confirmas precio por talla y disponibilidad?`)}`} hidden={prices.length>0}>Consultar por WhatsApp ↗</a>
+</form>

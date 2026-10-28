@@ -31,9 +31,22 @@ document.querySelectorAll('[data-close-dialog]').forEach(button=>button.addEvent
 for(const dialog of [cartDialog,sizeDialog])dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const box=dialog.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dialog.close()});
 document.querySelector('#clear-order').addEventListener('click',()=>{clearCart();announce('Pedido vaciado.');});
 document.querySelector('#send-order').addEventListener('click',event=>{if(!cartLines().length)event.preventDefault()});
+// Each gallery and collection card uses the current catalog price for its chosen size.
+document.querySelectorAll('[data-inline-purchase]').forEach(form=>{
+ const update=()=>{
+  const data=new FormData(form),product=productFor(data.get('design')),size=data.get('size'),price=product?.prices[size],known=Number.isFinite(price)&&price>0;
+  const prices=Object.values(product?.prices||{}),button=form.querySelector('[data-add-order]');
+  form.querySelector('[data-inline-price]').textContent=known?money(price):size?'Consultar precio':prices.length?'Desde '+money(Math.min(...prices)):'Consultar precio';
+  form.querySelector('[data-inline-hint]').textContent=known?'Precio por playera. Disponibilidad por confirmar.':size?'Confirma el precio y la disponibilidad por WhatsApp.':prices.length?'Elige una talla para ver su precio.':'Precio por confirmar. Consulta por WhatsApp.';
+  button.disabled=!known;button.textContent=known?'Agregar al carrito ↗':size?'Precio por confirmar':'Elige tu talla';
+  const consult=form.querySelector('[data-inline-consult]');consult.hidden=known||(!size&&prices.length>0);
+  consult.href='https://wa.me/525636457353?text='+encodeURIComponent('Hola, me interesa '+product.name+(size?', talla '+size:'')+'. ¿Me confirmas precio y disponibilidad?');
+ };
+ form.addEventListener('change',update);form.addEventListener('submit',event=>event.preventDefault());update();
+});
 document.querySelectorAll('[data-add-order]').forEach(button=>button.addEventListener('click',()=>{
  const form=document.querySelector(button.dataset.orderForm),data=new FormData(form),key=button.dataset.productKey||data.get('design'),size=data.get('size'),quantityInput=form.querySelector('[name="quantity"]');
  if(quantityInput&&!quantityInput.reportValidity())return;
- try{addItem(key,size,quantityInput?Number(quantityInput.value):1);announce(productFor(key).name+', talla '+size+', agregada a tu pedido.');openDialog(cartDialog)}catch(error){announce(error.message)}
+ try{addItem(key,size,quantityInput?Number(quantityInput.value):1);announce(productFor(key).name+', talla '+size+', agregada a tu carrito.');document.querySelector('#gallery')?.close();openDialog(cartDialog)}catch(error){announce(error.message)}
 }));
 try{const key='noctbit-storage-check';localStorage.setItem(key,'1');localStorage.removeItem(key)}catch{document.querySelector('#cart-storage-note').textContent='Tu navegador no permite guardar la selección. Mantenla abierta mientras armas tu pedido.'}

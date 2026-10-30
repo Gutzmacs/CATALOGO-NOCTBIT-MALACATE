@@ -4,8 +4,10 @@ import PurchaseTerms from '../components/PurchaseTerms.astro';
 import InfoTabs from '../components/InfoTabs.astro';
 import products from '../data/products.json';
 import {finishFor} from '../lib/product-finish.js';
+import {coverPhotoFor} from '../lib/product-photos.js';
 export function getStaticPaths(){return products.map(product=>({params:{key:product.key},props:{product}}));}
 const {product:p}=Astro.props;
+const cover=coverPhotoFor(p);
 const sizes=['CH','M','G','XL','2XL','3XL'];
 const message=`Hola, me interesa ${p.name}, de ${p.brand}. ¿Me ayudas a elegir talla y confirmar precio, disponibilidad y entrega?`;
 ---
@@ -13,9 +15,9 @@ const message=`Hola, me interesa ${p.name}, de ${p.brand}. ¿Me ayudas a elegir 
 <script slot="head" is:inline type="module" src="product-lightbox.js?v=short-captions-1"></script>
 <header class="detail-header"><a href="index.html#coleccion">← Volver al catálogo</a><span>{p.brand}<small>POR {p.author.toUpperCase()}</small></span></header>
 <main class="product-detail"><section class="detail-photos" aria-label={`Fotos de ${p.name}`}>
-<a class="main-photo-link" href={p.photos[0].src} target="_blank" rel="noopener" aria-label="Ampliar fotos del diseño"><img id="detail-photo" src={p.photos[0].displaySrc} alt={`${p.photos[0].alt} de ${p.name}`} width={p.photos[0].width} height={p.photos[0].height} decoding="async" fetchpriority="high"/></a>
+<a class="main-photo-link" href={cover.src} target="_blank" rel="noopener" aria-label="Ampliar fotos del diseño"><img id="detail-photo" src={cover.displaySrc} alt={`${cover.alt} de ${p.name}`} width={cover.width} height={cover.height} decoding="async" fetchpriority="high"/></a>
 <p id="photo-caption">Toca para ampliar</p>
-<div class="photo-thumbs">{p.photos.map((photo,i)=><button class="photo-thumb" type="button" data-photo={photo.displaySrc} data-caption={photo.alt} data-original={photo.src} data-width={photo.width} data-height={photo.height} aria-label={`Ver ${photo.alt}`} aria-pressed={String(i===0)}><img src={photo.displaySrc.replace(".webp", "-thumb.webp")} alt={photo.alt} loading="lazy" decoding="async"/><span>{photo.label || photo.alt}</span></button>)}</div>
+<div class="photo-thumbs">{p.photos.map(photo=><button class="photo-thumb" type="button" data-photo={photo.displaySrc} data-caption={photo.alt} data-original={photo.src} data-width={photo.width} data-height={photo.height} aria-label={`Ver ${photo.alt}`} aria-pressed={String(photo===cover)}><img src={photo.displaySrc.replace(".webp", "-thumb.webp")} alt={photo.alt} loading="lazy" decoding="async"/><span>{photo.label || photo.alt}</span></button>)}</div>
 </section><section class="detail-info"><p class="eyebrow">{p.brand} · POR {p.author.toUpperCase()}</p>{p.key==='muertos'&&<span class="season-tag">TEMPORADA · DÍA DE MUERTOS</span>}<h1>{p.name}</h1><p class="detail-description">{p.description}</p>
 <div class="fit-summary"><span class="eyebrow">CORTE Y AJUSTE</span><p>Algodón · Corte oversize · Hombros caídos</p><button type="button" class="size-guide-button" data-open-size-guide>Ver cómo medirme ↗</button></div>
 <div class="product-share"><button type="button" id="share-product">Compartir playera ↗</button><a id="share-whatsapp" target="_blank" rel="noopener" hidden>Compartir por WhatsApp ↗</a><p id="share-status" role="status"></p><input id="share-url" aria-label="Enlace de esta playera para copiar" readonly hidden/></div>

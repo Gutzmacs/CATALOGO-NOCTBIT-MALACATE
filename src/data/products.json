@@ -15,20 +15,13 @@
     },
     "photos": [
       {
-        "src": "assets/ninja-lookbook-hd.png",
-        "alt": "Frente, espalda y detalles",
-        "width": 1121,
-        "height": 1403,
-        "displaySrc": "assets/ninja-lookbook-hd.webp",
-        "label": "Vistas"
-      },
-      {
         "src": "assets/ninja-back-hd.png",
         "alt": "Vista trasera",
         "width": 1121,
         "height": 1403,
         "displaySrc": "assets/ninja-back-hd.webp",
-        "label": "Espalda"
+        "label": "Espalda",
+        "cover": true
       },
       {
         "src": "assets/ninja-close-hd.png",
@@ -37,6 +30,14 @@
         "height": 1866,
         "displaySrc": "assets/ninja-close-hd.webp",
         "label": "Detalles"
+      },
+      {
+        "src": "assets/ninja-lookbook-hd.png",
+        "alt": "Frente, espalda y detalles",
+        "width": 1121,
+        "height": 1403,
+        "displaySrc": "assets/ninja-lookbook-hd.webp",
+        "label": "Vistas"
       }
     ],
     "fit": "Corte oversize: silueta holgada, hombros caídos y mangas amplias. Compara las medidas de la guía con una playera que ya te quede como te gusta."
@@ -62,7 +63,8 @@
         "width": 1312,
         "height": 1199,
         "displaySrc": "assets/japones-front-hd.webp",
-        "label": "Frente"
+        "label": "Frente",
+        "cover": true
       },
       {
         "src": "assets/japones-back-hd.png",
@@ -71,14 +73,6 @@
         "height": 1199,
         "displaySrc": "assets/japones-back-hd.webp",
         "label": "Espalda"
-      },
-      {
-        "src": "assets/japones-detalle-manga.jpg",
-        "alt": "Detalle de manga",
-        "width": 1536,
-        "height": 1404,
-        "displaySrc": "assets/japones-detalle-manga.webp",
-        "label": "Manga"
       },
       {
         "src": "assets/japones-detalle-frente.jpg",
@@ -95,6 +89,14 @@
         "height": 1404,
         "displaySrc": "assets/japones-detalle-espalda.webp",
         "label": "Detalle espalda"
+      },
+      {
+        "src": "assets/japones-detalle-manga.jpg",
+        "alt": "Detalle de manga",
+        "width": 1536,
+        "height": 1404,
+        "displaySrc": "assets/japones-detalle-manga.webp",
+        "label": "Manga"
       }
     ],
     "fit": "Corte oversize: silueta holgada, hombros caídos y mangas amplias. Compara las medidas de la guía con una playera que ya te quede como te gusta."
@@ -115,12 +117,12 @@
     },
     "photos": [
       {
-        "src": "assets/espadas-lookbook-original.jpg",
-        "alt": "Frente, espalda y detalles",
-        "width": 1536,
-        "height": 1404,
-        "displaySrc": "assets/espadas-lookbook-original.webp",
-        "label": "Vistas"
+        "src": "assets/espadas-front.webp",
+        "alt": "Vista frontal · emblema y manga",
+        "label": "Frente",
+        "width": 381,
+        "height": 679,
+        "displaySrc": "assets/espadas-front.webp"
       },
       {
         "src": "assets/espadas-back-original.jpg",
@@ -128,7 +130,8 @@
         "width": 1536,
         "height": 1404,
         "displaySrc": "assets/espadas-back-original.webp",
-        "label": "Espalda"
+        "label": "Espalda",
+        "cover": true
       },
       {
         "src": "assets/espadas-detalle-emblema.jpg",
@@ -145,6 +148,14 @@
         "height": 1536,
         "displaySrc": "assets/espadas-detalle-parche.webp",
         "label": "Manga"
+      },
+      {
+        "src": "assets/espadas-lookbook-original.jpg",
+        "alt": "Frente, espalda y detalles",
+        "width": 1536,
+        "height": 1404,
+        "displaySrc": "assets/espadas-lookbook-original.webp",
+        "label": "Vistas"
       }
     ],
     "fit": "Corte oversize: silueta holgada, hombros caídos y mangas amplias. Compara las medidas de la guía con una playera que ya te quede como te gusta."
@@ -171,7 +182,8 @@
         "width": 1199,
         "height": 1312,
         "displaySrc": "assets/camiseta-negra-con-estampado-comic.webp",
-        "label": "Unisex"
+        "label": "Unisex",
+        "cover": true
       },
       {
         "src": "assets/camiseta-oversized-negra-con-estampado-comic.png",
@@ -215,7 +227,8 @@
         "width": 864,
         "height": 1536,
         "displaySrc": "assets/nai-dia-de-muertos-original.webp",
-        "label": "Vista completa"
+        "label": "Vista completa",
+        "cover": true
       }
     ],
     "fit": "Corte oversize: silueta holgada, hombros caídos y mangas amplias. Compara las medidas de la guía con una playera que ya te quede como te gusta."
@@ -239,15 +252,6 @@
     },
     "photos": [
       {
-        "src": "assets/marco-de-angeles-espalda-corregida.png",
-        "alt": "Vista trasera · marco de ángeles",
-        "imageType": "Mockup",
-        "width": 1121,
-        "height": 1403,
-        "displaySrc": "assets/marco-de-angeles-espalda-corregida.webp",
-        "label": "Espalda"
-      },
-      {
         "src": "assets/marco-de-angeles-frente.png",
         "alt": "Vista frontal · emblema y manga",
         "imageType": "Mockup",
@@ -257,13 +261,14 @@
         "label": "Frente"
       },
       {
-        "src": "assets/marco-de-angeles-detalles.png",
-        "alt": "Espalda y acercamientos del diseño",
+        "src": "assets/marco-de-angeles-espalda-corregida.png",
+        "alt": "Vista trasera · marco de ángeles",
         "imageType": "Mockup",
-        "width": 1024,
-        "height": 1536,
-        "displaySrc": "assets/marco-de-angeles-detalles.webp",
-        "label": "Detalles"
+        "width": 1121,
+        "height": 1403,
+        "displaySrc": "assets/marco-de-angeles-espalda-corregida.webp",
+        "label": "Espalda",
+        "cover": true
       },
       {
         "src": "assets/marco-de-angeles-bordado.png",
@@ -273,6 +278,15 @@
         "height": 1536,
         "displaySrc": "assets/marco-de-angeles-bordado.webp",
         "label": "Bordado"
+      },
+      {
+        "src": "assets/marco-de-angeles-detalles.png",
+        "alt": "Espalda y acercamientos del diseño",
+        "imageType": "Mockup",
+        "width": 1024,
+        "height": 1536,
+        "displaySrc": "assets/marco-de-angeles-detalles.webp",
+        "label": "Detalles"
       }
     ]
   }

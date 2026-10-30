@@ -1,6 +1,6 @@
 ---
 import products from "../data/products.json";
-const coverFor = product => product.photos.find(photo => /^Vista (frontal|trasera)/i.test(photo.alt)) || product.photos[0];
+import {coverPhotoFor as coverFor} from '../lib/product-photos.js';
 ---
 <section class="collection section" id="coleccion">
   <div class="section-heading" id="elige"><div><p class="eyebrow">ENCUENTRA TU DISEÑO</p><h2>Elige tu playera.</h2></div><p>Elige el diseño que te guste. Después selecciona tu talla para ver el precio exacto.</p></div>

@@ -121,7 +121,7 @@
         },
         {
           "name": "photos",
-          "label": "Fotos (la primera aparece en galería)",
+          "label": "Fotos (ordena las vistas y marca una portada)",
           "type": "object",
           "list": true,
           "fields": [
@@ -141,6 +141,11 @@
               "name": "label",
               "label": "Etiqueta corta (Frente, Espalda, Detalles...)",
               "type": "string"
+            },
+            {
+              "name": "cover",
+              "label": "Portada (marca solo una foto)",
+              "type": "boolean"
             },
             {
               "name": "imageType",

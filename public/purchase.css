@@ -12,3 +12,6 @@
 :is(.product-image,.main-photo-link,.photo-thumb,.hero-photos) img[src*="espadas-back-original"]{object-view-box:inset(0 17.57% 0 0)}
 :is(.main-photo-link,.photo-thumb) img[src*="japones-detalle-manga"]{object-view-box:inset(0 12.1% 0 0)}
 :is(.main-photo-link,.photo-thumb) img[src*="espadas-detalle-parche"]{object-view-box:inset(0 8.86% 0 0)}
+
+/* Hide the narrow divider of the existing standalone front view. */
+:is(.main-photo-link,.photo-thumb) img[src*="espadas-front"]{object-view-box:inset(0 .8% 0 0)}

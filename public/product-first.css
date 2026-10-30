@@ -17,8 +17,8 @@
 .collection .section-heading h2{font-size:34px}
 .gallery-toolbar{margin-bottom:24px;padding-bottom:16px}
 .product-grid,:root[data-designer=nai] .product-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.product{padding:8px 8px 0;box-shadow:none}
-.product-image,:root[data-designer=nai] .product-image{height:auto;aspect-ratio:1;background:#16151b}
+.product{padding:8px 8px 0;box-shadow:none;display:flex;flex-direction:column}
+.product-image,:root[data-designer=nai] .product-image{height:auto;aspect-ratio:4/5;background:#16151b;flex-shrink:0}
 .product-image img{object-fit:contain}
 .product-image:hover img{transform:none}
 .product-top h3{font-size:24px}
@@ -73,7 +73,7 @@
 .collection-selection p{margin:0;color:var(--gold)}
 .collection-selection button{color:var(--paper);background:transparent;border:0;border-bottom:1px solid var(--line);padding:7px 0;min-height:44px;font:10px var(--mono)}
 .collection-selection button:hover{color:var(--gold)}
-.product-sheet-link{display:flex;justify-content:space-between;gap:12px;align-items:center;min-height:48px;padding:14px 8px;margin-top:4px;border-top:1px solid var(--gold);color:var(--gold);font:11px var(--mono)}.product-sheet-link:hover{background:#ffffff08}
+.product-sheet-link{display:flex;justify-content:space-between;gap:12px;align-items:center;min-height:48px;padding:14px 8px;margin-top:auto;border-top:1px solid var(--gold);color:var(--gold);font:11px var(--mono)}.product-sheet-link:hover{background:#ffffff08}
 /* Original marks in the navigation; only the active underline moves. */
 .header{padding-top:10px;padding-bottom:10px;gap:24px}
 .header .brand-switch{align-items:center;gap:22px;flex-shrink:0}

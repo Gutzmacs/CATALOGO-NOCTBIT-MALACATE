@@ -1,12 +1,13 @@
 ---
 import SizeGuide from "./SizeGuide.astro";
+import PurchaseTerms from "./PurchaseTerms.astro";
 ---
 <button type="button" class="order-float" data-open-order aria-label="Abrir mi pedido"><span aria-hidden="true">▣</span> Mi pedido <span data-order-count>0</span></button>
 <p class="order-toast" role="status" id="order-toast" hidden></p>
 <dialog class="shop-dialog cart-dialog" id="order-dialog" aria-labelledby="order-title">
  <header class="shop-dialog-head"><div><p class="eyebrow">TU SELECCIÓN</p><h2 id="order-title">Mi pedido.</h2></div><button type="button" class="shop-close" data-close-dialog="order-dialog" aria-label="Cerrar mi pedido">×</button></header>
  <div class="shop-dialog-body"><p class="cart-empty" id="order-empty">Tu pedido está vacío. Elige un diseño, una talla y agrega tu primera playera.</p><div id="order-lines"></div><p class="cart-persistence" id="cart-storage-note">Tu selección se guarda en este navegador. Los precios se revisan al volver a abrir la página.</p></div>
- <footer class="cart-footer"><div class="cart-subtotal"><span>Subtotal de prendas</span><strong id="order-total">$0 MXN</strong></div><p>Pago contra entrega por el momento.</p><p>Entrega en hasta 7 días, con disponibilidad por confirmar. Envío, si aplica, se cotiza aparte.</p><a class="button dark cart-send" id="send-order" target="_blank" rel="noopener" aria-disabled="true">Consultar pedido por WhatsApp ↗</a><button class="shop-text-button" id="clear-order" type="button" disabled>Vaciar pedido</button><p class="cart-disclaimer">Revisa el mensaje en WhatsApp antes de enviarlo. Agregar prendas aquí no confirma una compra.</p></footer>
+ <footer class="cart-footer"><div class="cart-subtotal"><span>Subtotal de prendas</span><strong id="order-total">$0 MXN</strong></div><PurchaseTerms /><a class="button dark cart-send" id="send-order" target="_blank" rel="noopener" aria-disabled="true">Consultar pedido por WhatsApp ↗</a><button class="shop-text-button" id="clear-order" type="button" disabled>Vaciar pedido</button><p class="cart-disclaimer">Revisa el mensaje en WhatsApp antes de enviarlo. Agregar prendas aquí no confirma una compra.</p></footer>
 </dialog>
 <SizeGuide />
 <script>import '../scripts/shopping.js';</script>

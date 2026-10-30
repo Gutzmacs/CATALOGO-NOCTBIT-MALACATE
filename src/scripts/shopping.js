@@ -20,13 +20,20 @@ function render(){
   const controls=node('div','order-controls');
   for(const delta of [-1,1]){const button=node('button','order-quantity',delta===-1?'−':'+');button.type='button';button.setAttribute('aria-label',(delta===-1?'Reducir':'Aumentar')+' cantidad de '+line.product.name+', talla '+line.size);button.disabled=delta===-1?line.quantity===1:line.quantity===20;button.addEventListener('click',()=>setQuantity(line.key,line.size,line.quantity+delta));controls.append(button);if(delta===-1)controls.append(node('span','order-count',String(line.quantity)))}
   const remove=node('button','shop-text-button','Quitar');remove.type='button';remove.setAttribute('aria-label','Quitar '+line.product.name+', talla '+line.size);remove.addEventListener('click',()=>{removeItem(line.key,line.size);announce('Playera retirada del pedido.');});controls.append(remove);
-  info.append(heading,meta,finish,price,controls);row.append(image,info,node('strong','order-line-total',money(line.lineTotal)));container.append(row);
+  info.append(heading,meta);
+  if(line.size==='3XL')info.append(node('p','order-size-note','3XL: confirma medidas y disponibilidad antes de cerrar el pedido.'));
+  info.append(finish,price,controls);row.append(image,info,node('strong','order-line-total',money(line.lineTotal)));container.append(row);
  }
  if(focused){const target=[...container.querySelectorAll('button')].find(button=>button.getAttribute('aria-label')===focused&&!button.disabled);target?.focus({preventScroll:true});}
 }
 $cart.subscribe(render);
 document.querySelectorAll('[data-open-order]').forEach(button=>button.addEventListener('click',()=>openDialog(cartDialog)));
-document.querySelectorAll('[data-open-size-guide]').forEach(button=>button.addEventListener('click',()=>openDialog(sizeDialog)));
+document.querySelectorAll('[data-open-size-guide]').forEach(button=>button.addEventListener('click',()=>{
+ const product=productFor(document.body.dataset.product),size=document.querySelector('#detail-form input[name="size"]:checked')?.value;
+ const message=['Hola, quisiera ayuda para elegir mi talla.','Diseño: '+(product?.name||'___'),'Corte: oversize',size?'Talla que me interesa: '+size:null,size==='3XL'?'¿Me confirmas las medidas y disponibilidad de 3XL?':null,'Mi playera de referencia mide ___ cm de ancho y ___ cm de largo.'].filter(Boolean).join('\n');
+ document.querySelector('#ask-size').href='https://wa.me/525636457353?text='+encodeURIComponent(message);
+ openDialog(sizeDialog);
+}));
 document.querySelectorAll('[data-size-cut]').forEach(button=>button.addEventListener('click',()=>{
  const cut=button.dataset.sizeCut;
  document.querySelectorAll('[data-size-cut]').forEach(option=>option.setAttribute('aria-pressed',String(option.dataset.sizeCut===cut)));
@@ -43,7 +50,7 @@ document.querySelectorAll('[data-inline-purchase]').forEach(form=>{
   const prices=Object.values(product?.prices||{}),button=form.querySelector('[data-add-order]');
   form.querySelector('[data-inline-price]').textContent=known?money(price):size?'Consultar precio':prices.length?'Desde '+money(Math.min(...prices)):'Consultar precio';
   form.querySelector('[data-inline-hint]').textContent=known?'Precio por playera. Disponibilidad por confirmar.':size?'Confirma el precio y la disponibilidad por WhatsApp.':prices.length?'Elige una talla para ver su precio.':'Precio por confirmar. Consulta por WhatsApp.';
-  button.disabled=!known;button.textContent=known?'Agregar al carrito ↗':size?'Precio por confirmar':'Elige tu talla';
+  button.disabled=!known;button.textContent=known?'Agregar a mi pedido ↗':size?'Precio por confirmar':'Elige tu talla';
   const consult=form.querySelector('[data-inline-consult]');consult.hidden=known||(!size&&prices.length>0);
   consult.href='https://wa.me/525636457353?text='+encodeURIComponent('Hola, me interesa '+product.name+(size?', talla '+size:'')+'. ¿Me confirmas precio y disponibilidad?');
  };
@@ -52,7 +59,7 @@ document.querySelectorAll('[data-inline-purchase]').forEach(form=>{
 document.querySelectorAll('[data-add-order]').forEach(button=>button.addEventListener('click',()=>{
  const form=document.querySelector(button.dataset.orderForm),data=new FormData(form),key=button.dataset.productKey||data.get('design'),size=data.get('size'),quantityInput=form.querySelector('[name="quantity"]');
  if(quantityInput&&!quantityInput.reportValidity())return;
- try{addItem(key,size,quantityInput?Number(quantityInput.value):1);announce(productFor(key).name+', talla '+size+', agregada a tu carrito.');document.querySelector('#gallery')?.close();openDialog(cartDialog)}catch(error){announce(error.message)}
+ try{addItem(key,size,quantityInput?Number(quantityInput.value):1);announce(productFor(key).name+', talla '+size+', agregada a tu pedido.');document.querySelector('#gallery')?.close();openDialog(cartDialog)}catch(error){announce(error.message)}
 }));
 try{const key='noctbit-storage-check';localStorage.setItem(key,'1');localStorage.removeItem(key)}catch{document.querySelector('#cart-storage-note').textContent='Tu navegador no permite guardar la selección. Mantenla abierta mientras armas tu pedido.'}
 document.documentElement.dataset.shoppingReady='true';

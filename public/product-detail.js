@@ -5,15 +5,13 @@ const whatsapp=document.querySelector('#order-whatsapp');
 const add=document.querySelector('[data-add-order]');
 const priceOutput=document.querySelector('#detail-price');
 const sizeNote=document.querySelector('#detail-size-note');
-const prices=Object.values(product.prices).filter(value=>Number.isFinite(value)&&value>0);
-const fromPrice=prices.length?'Desde $'+Math.min(...prices)+' MXN':'Consultar precio';
 function updateOrder(){
  const data=new FormData(form),size=data.get('size');
  const quantity=Number(data.get('quantity'));
  const validQuantity=Number.isInteger(quantity)&&quantity>=1&&quantity<=20;
  const price=product.prices[size],known=Number.isFinite(price)&&price>0;
  document.querySelector('#detail-3xl-note').hidden=size!=='3XL';
- priceOutput.textContent=!size?fromPrice:known?'$'+price+' MXN':'Consultar precio';
+ priceOutput.textContent=!size?'Elige tu talla':known?'$'+price+' MXN':'Consultar precio';
  sizeNote.textContent=!size?'Selecciona tu talla para ver el precio exacto y agregarla a tu pedido.':!validQuantity?'Elige una cantidad entera de 1 a 20 playeras.':'Talla '+size+' · Corte oversize · Disponibilidad por confirmar.';
  add.disabled=!size||!known||!validQuantity||document.documentElement.dataset.shoppingReady!=='true';
  add.textContent=!size?'Elige tu talla para agregar':!validQuantity?'Revisa la cantidad':known?'Agregar a mi pedido ↗':'Consulta el precio antes de agregar';

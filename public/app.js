@@ -1,6 +1,6 @@
 'use strict';
 
-// Pixel animation and mouse-play engine. All overlays ignore pointer events.
+// Pixel companion and training animation. Decorative canvases ignore pointer events.
 (() => {
   const DURATIONS = { jump: 700, slash: 430, throw: 560, roll: 600, dash: 350, celebrate: 900 };
   function createActor(x, y) {
@@ -113,53 +113,39 @@
     });
   }
   window.SenaiDrawSprite = drawSprite;
-  const finePointer = window.matchMedia('(any-hover: hover) and (any-pointer: fine)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const root = document.documentElement;
-  const overlay = document.createElement('canvas'); overlay.id = 'senai-pixel-cursor'; overlay.hidden = true; overlay.setAttribute('aria-hidden', 'true');
-  const ctx = overlay.getContext('2d');
-  if (!ctx) return;
-  document.body.append(overlay);
-  const actor = createActor(0, 0);
-  let visible = false, frameId = 0, lastPaint = 0, pointerX = 0, pointerY = 0, initialized = false, clickIndex = 0, hot = false, lastDash = -1000;
-  function resize() { overlay.width = window.innerWidth; overlay.height = window.innerHeight; ctx.imageSmoothingEnabled = false; }
-  resize(); window.addEventListener('resize', resize);
-  function paint(now) {
-    frameId = 0;
-    if (!visible) return;
-    if (now - lastPaint >= 30 || reducedMotion.matches) {
-      lastPaint = now; ctx.clearRect(0, 0, overlay.width, overlay.height);
-      ctx.fillStyle = hot ? '#ffffff' : '#edcf95'; ctx.fillRect(Math.round(pointerX - 2), Math.round(pointerY - 2), 4, 4);
-      renderActor(ctx, actor, now, reducedMotion.matches);
+  const mascotHost = document.querySelector('#adventure-cover');
+  if (mascotHost) {
+    const overlay = document.createElement('canvas');
+    overlay.id = 'senai-pixel-cursor'; overlay.width = 112; overlay.height = 112;
+    overlay.setAttribute('aria-hidden', 'true');
+    const ctx = overlay.getContext('2d');
+    if (ctx) {
+      ctx.imageSmoothingEnabled = false;
+      mascotHost.classList.add('has-mascot'); mascotHost.append(overlay);
+      const actor = createActor(56, 104);
+      let inView = false, frameId = 0, lastPaint = 0;
+      function paint(now) {
+        frameId = 0;
+        if (!inView || document.hidden || !overlay.isConnected) return;
+        if (now - lastPaint >= 40 || reducedMotion.matches) {
+          lastPaint = now; ctx.clearRect(0, 0, 112, 112);
+          renderActor(ctx, actor, now, reducedMotion.matches);
+        }
+        if (!reducedMotion.matches) frameId = requestAnimationFrame(paint);
+      }
+      function start() { if (!frameId && inView && !document.hidden) frameId = requestAnimationFrame(paint); }
+      function stop() { if (frameId) cancelAnimationFrame(frameId); frameId = 0; actor.last = 0; }
+      if ('IntersectionObserver' in window) new IntersectionObserver(entries => {
+        inView = entries[0].isIntersecting;
+        if (inView) start(); else stop();
+      }).observe(mascotHost);
+      else { inView = true; start(); }
+      mascotHost.addEventListener('pointerenter', () => { queueAction(actor, 'celebrate', performance.now(), null, reducedMotion.matches); start(); });
+      document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
+      reducedMotion.addEventListener('change', () => { lastPaint = 0; start(); });
     }
-    if (!reducedMotion.matches) frameId = requestAnimationFrame(paint);
   }
-  function start() { if (!frameId) frameId = requestAnimationFrame(paint); }
-  function hide() { visible = false; overlay.hidden = true; root.classList.remove('pixel-cursor-active'); if (frameId) cancelAnimationFrame(frameId); frameId = 0; actor.last = 0; }
-  document.addEventListener('pointermove', event => {
-    if (!finePointer.matches || event.pointerType === 'touch' || document.hidden || event.target.closest?.('input,select,textarea,[contenteditable="true"],#dojo-arena,#castle-game')) { hide(); return; }
-    const travel = Math.hypot(event.clientX-pointerX,event.clientY-pointerY);
-    pointerX = event.clientX; pointerY = event.clientY;
-    if (visible && travel > 100 && performance.now()-lastDash > 1000 && !actor.action) { queueAction(actor,'dash',performance.now(),null,reducedMotion.matches);lastDash=performance.now(); }
-    actor.tx = Math.min(window.innerWidth - 48, Math.max(48, pointerX + 36));
-    actor.ty = Math.min(window.innerHeight - 12, Math.max(112, pointerY + 75));
-    if (!initialized || !visible) { actor.x = actor.tx; actor.y = actor.ty; initialized = true; }
-    hot = !!event.target.closest?.('a,button,label,[role="button"]');
-    visible = true; overlay.hidden = false; root.classList.add('pixel-cursor-active'); start();
-  }, { passive: true });
-  document.addEventListener('pointerdown', event => {
-    if (event.pointerType === 'touch') { hide(); return; }
-    if (visible) queueAction(actor, event.detail >= 2 ? 'roll' : ['jump','slash','throw','slash'][clickIndex++ % 4], performance.now(), { x: event.clientX, y: event.clientY }, reducedMotion.matches);
-    start();
-  }, { passive: true });
-  document.addEventListener('dblclick', event => { if(visible){queueAction(actor,'roll',performance.now(),{x:event.clientX,y:event.clientY},reducedMotion.matches);start();} });
-  document.addEventListener('pointerout', event => { if (!event.relatedTarget) hide(); });
-  document.addEventListener('keydown', event => { if (event.key === 'Tab') hide(); });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) hide(); });
-  window.addEventListener('blur', hide); finePointer.addEventListener('change', hide);
-  reducedMotion.addEventListener('change', () => { if (visible) start(); });
-  const productDialog = document.querySelector('#gallery');
-  if (productDialog) new MutationObserver(() => { (productDialog.open ? productDialog : document.body).append(overlay); if (visible) start(); }).observe(productDialog, { attributes: true, attributeFilter: ['open'] });
 
   // A compact training arena works with mouse, touch and ordinary keyboard buttons.
   const arena = document.querySelector('#dojo-arena');

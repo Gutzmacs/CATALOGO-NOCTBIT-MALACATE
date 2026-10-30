@@ -6,11 +6,9 @@ import {finishFor} from '../lib/product-finish.js';
 export function getStaticPaths(){return products.map(product=>({params:{key:product.key},props:{product}}));}
 const {product:p}=Astro.props;
 const sizes=['CH','M','G','XL','2XL','3XL'];
-const prices=Object.values(p.prices).filter(value=>Number.isFinite(value)&&value>0);
-const price=prices.length?Math.min(...prices):null;
 const message=`Hola, me interesa ${p.name}, de ${p.brand}. ¿Me ayudas a elegir talla y confirmar precio, disponibilidad y entrega?`;
 ---
-<Page title={`${p.name} · ${p.brand}`} description={p.description} product={p.key} styles={['styles.css','product-detail.css?v=choose-size-1','vendor/photoswipe/photoswipe.css']} scripts={['product-detail.js?v=choose-size-1']}>
+<Page title={`${p.name} · ${p.brand}`} description={p.description} product={p.key} styles={['styles.css','product-detail.css?v=choose-size-1','vendor/photoswipe/photoswipe.css']} scripts={['product-detail.js?v=select-shirt-price-1']}>
 <script slot="head" is:inline type="module" src="product-lightbox.js?v=fichas-2"></script>
 <header class="detail-header"><a href="index.html#coleccion">← Volver al catálogo</a><span>{p.brand}<small>POR {p.author.toUpperCase()}</small></span></header>
 <main class="product-detail"><section class="detail-photos" aria-label={`Fotos de ${p.name}`}>
@@ -26,7 +24,7 @@ const message=`Hola, me interesa ${p.name}, de ${p.brand}. ¿Me ayudas a elegir 
  <button type="button" class="size-guide-button size-link-inline" data-open-size-guide>Cómo elegir mi talla ↗</button>
  <p class="stock-note" id="detail-size-note" role="status">Selecciona tu talla para ver el precio exacto y agregarla a tu pedido.</p>
  <p class="size-consult-note" id="detail-3xl-note" hidden>3XL: confirma sus medidas y disponibilidad por WhatsApp antes de cerrar tu pedido.</p>
- <div class="detail-price"><span>Precio por playera</span><output id="detail-price" aria-live="polite">{price?'Desde $'+price+' MXN':'Consultar precio'}</output></div>
+ <div class="detail-price"><span>Precio por playera</span><output id="detail-price" aria-live="polite">Elige tu talla</output></div>
  <p class="detail-extra">{finishFor(p)}</p>
  <div class="quantity-guide"><label class="quantity-field" for="detail-quantity">CANTIDAD<input id="detail-quantity" name="quantity" type="number" min="1" max="20" step="1" value="1" required/></label></div>
  <button class="button dark add-order-button" type="button" data-add-order data-order-form="#detail-form" data-product-key={p.key} disabled>Elige tu talla para agregar</button>

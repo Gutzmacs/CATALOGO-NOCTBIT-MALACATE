@@ -138,6 +138,11 @@
               "required": true
             },
             {
+              "name": "label",
+              "label": "Etiqueta corta (Frente, Espalda, Detalles...)",
+              "type": "string"
+            },
+            {
               "name": "imageType",
               "label": "Tipo de imagen (opcional)",
               "type": "select",

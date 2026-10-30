@@ -14,7 +14,7 @@ const coverFor = product => product.photos.find(photo => /^Vista (frontal|traser
       <div class="product-top"><h3><a href={'ficha-'+p.key+'.html'}>{p.name}</a></h3></div>
       <a aria-label={'Ver playera '+p.name} class={'product-image '+p.key} href={'ficha-'+p.key+'.html'}>
         <img alt={p.name+' · '+coverFor(p).alt} loading="lazy" decoding="async" src={coverFor(p).displaySrc} width={coverFor(p).width} height={coverFor(p).height}/>
-        {coverFor(p).imageType && <span class="image-label">{coverFor(p).imageType}</span>}<span aria-hidden="true" class="zoom">↗</span>
+        {coverFor(p).imageType && coverFor(p).imageType !== 'Mockup' && <span class="image-label">{coverFor(p).imageType}</span>}<span aria-hidden="true" class="zoom">↗</span>
       </a>
       {p.key==='muertos'&&<span class="season-tag">De temporada · Día de Muertos</span>}
       <a class="product-sheet-link" href={'ficha-'+p.key+'.html'}>Elegir playera <span aria-hidden="true">↗</span></a>

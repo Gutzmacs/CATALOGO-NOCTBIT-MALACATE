@@ -33,8 +33,6 @@ updateOrder();
 document.querySelectorAll('[data-photo]').forEach(button=>button.addEventListener('click',()=>{
  const image=document.querySelector('#detail-photo');image.src=button.dataset.photo;image.alt=button.dataset.caption+' de '+product.name;
  image.width=Number(button.dataset.width);image.height=Number(button.dataset.height);image.parentElement.href=button.dataset.original;
- document.querySelector('#photo-caption').textContent=button.dataset.caption+' · Toca para ampliar · Desliza entre vistas';
- const kind=document.querySelector('#photo-kind');kind.textContent=button.dataset.imageType||'';kind.hidden=!button.dataset.imageType;
  document.querySelectorAll('[data-photo]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
 }));
 const shareButton=document.querySelector('#share-product'),shareStatus=document.querySelector('#share-status'),shareUrl=new URL(location.href);

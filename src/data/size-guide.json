@@ -1,0 +1,36 @@
+{
+  "provider": "Eurocotton",
+  "sourceUnit": "inches",
+  "cuts": [
+    {
+      "key": "oversize",
+      "name": "Corte oversize",
+      "description": "Silueta amplia, hombros caídos y mangas holgadas.",
+      "model": "TCOMOVENEG",
+      "source": "https://www.eurocotton.com.mx/playera-oversize-cuello-redondo-color-negro/p",
+      "sizes": [
+        { "size": "CH", "width": 23, "length": 27.25 },
+        { "size": "M", "width": 24.5, "length": 28.25 },
+        { "size": "G", "width": 26, "length": 29.25 },
+        { "size": "XL", "width": 27.5, "length": 30.25 },
+        { "size": "2XL", "width": 28, "length": 31 }
+      ],
+      "note": "La tabla oficial de este modelo llega hasta 2XL. Si buscas 3XL, consulta sus medidas y disponibilidad antes de elegir."
+    },
+    {
+      "key": "regular",
+      "name": "Corte normal",
+      "description": "Silueta clásica. Compara sus medidas con una playera que ya uses.",
+      "model": "TCOMADCNEG",
+      "source": "https://www.eurocotton.com.mx/playera-cuello-redondo-manga-corta-para-hombre-color-negro/p",
+      "sizes": [
+        { "size": "CH", "width": 18, "length": 27.75 },
+        { "size": "M", "width": 20, "length": 28.75 },
+        { "size": "G", "width": 22, "length": 29.75 },
+        { "size": "XL", "width": 24, "length": 30.75 },
+        { "size": "2XL", "width": 26, "length": 31.75 },
+        { "size": "3XL", "width": 27.5, "length": 32.75 }
+      ]
+    }
+  ]
+}

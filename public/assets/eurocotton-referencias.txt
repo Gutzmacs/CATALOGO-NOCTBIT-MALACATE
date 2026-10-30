@@ -1,0 +1,13 @@
+Referencia de corte: Eurocotton TCOMOVENEG, oversize negro sin estampar.
+Fotografías originales del proveedor; no se han alterado ni aplicado estampados.
+
+Ficha de origen:
+https://www.eurocotton.com.mx/playera-oversize-cuello-redondo-color-negro/p
+
+eurocotton-oversize-frente.jpg:
+https://eurocotton.vtexassets.com/arquivos/ids/165476-800-800/TCOMOVENEG_1.jpg?v=638750866611400000
+
+eurocotton-oversize-vista.jpg:
+https://eurocotton.vtexassets.com/arquivos/ids/165477-800-800/TCOMOVENEG_7.jpg?v=638750866611400000
+
+Las tablas originales en pulgadas y sus fuentes se conservan en src/data/size-guide.json.

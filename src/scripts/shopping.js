@@ -27,6 +27,11 @@ function render(){
 $cart.subscribe(render);
 document.querySelectorAll('[data-open-order]').forEach(button=>button.addEventListener('click',()=>openDialog(cartDialog)));
 document.querySelectorAll('[data-open-size-guide]').forEach(button=>button.addEventListener('click',()=>openDialog(sizeDialog)));
+document.querySelectorAll('[data-size-cut]').forEach(button=>button.addEventListener('click',()=>{
+ const cut=button.dataset.sizeCut;
+ document.querySelectorAll('[data-size-cut]').forEach(option=>option.setAttribute('aria-pressed',String(option.dataset.sizeCut===cut)));
+ document.querySelectorAll('[data-size-cut-panel]').forEach(panel=>panel.hidden=panel.dataset.sizeCutPanel!==cut);
+}));
 document.querySelectorAll('[data-close-dialog]').forEach(button=>button.addEventListener('click',()=>document.getElementById(button.dataset.closeDialog).close()));
 for(const dialog of [cartDialog,sizeDialog])dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const box=dialog.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dialog.close()});
 document.querySelector('#clear-order').addEventListener('click',()=>{clearCart();announce('Pedido vaciado.');});

@@ -26,3 +26,52 @@
 .inline-purchase a{color:#493426!important;text-decoration:underline}
 #gallery .gallery-content:not(.gallery-zoom){max-height:40dvh}
 #gallery .gallery-content:not(.gallery-zoom) img{max-height:36dvh;width:auto;max-width:100%;object-fit:contain}
+
+/* Eurocotton size guide: scoped table styles keep catalog price styles out. */
+.size-dialog{width:min(94vw,720px)}
+.size-guide-intro{margin:0 0 8px;font-size:15px;line-height:1.65}
+.size-guide-cut-note,.size-guide-tolerance{font-size:12px;line-height:1.7;color:var(--muted)}
+.size-guide-cut-note{margin:0 0 20px}
+.size-cut-picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 14px}
+.size-cut-picker button{min-height:48px;padding:12px 8px;border:1px solid #71607f;border-radius:4px;background:#201729;color:var(--paper);font-size:14px;font-weight:700}
+.size-cut-picker button[aria-pressed=true]{background:#dfc38b;color:#17121d;border-color:#f3ddaf}
+.size-cut-options{display:grid;gap:12px}
+.size-cut{min-width:0;border:1px solid #5c4b69;border-radius:6px;overflow:hidden;background:#1e1728}
+.size-cut[hidden]{display:none}
+.size-measure-help>summary:focus-visible{outline:2px solid var(--gold);outline-offset:-4px}
+.size-cut-content{padding:0 16px 16px}
+.size-cut-name{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 -16px;padding:16px;background:#30233c;border-bottom:1px solid #5c4b69;font-size:16px;line-height:1.5}
+.size-cut-name span{font-size:10px;font-weight:400;color:var(--gold);white-space:nowrap}
+.size-cut-description{font-size:12px;line-height:1.7;color:var(--muted);margin:14px 0}
+.size-table-wrap{width:100%;overflow-x:auto}
+.size-guide-table{border-collapse:collapse;width:100%;table-layout:fixed;margin:0;background:transparent}
+.size-guide-table caption{text-align:left;color:var(--muted);font:11px/1.5 var(--sans);padding:0 0 12px;letter-spacing:0}
+.size-guide-table th,.size-guide-table td{padding:12px 8px;border:0;border-bottom:1px solid #4b3d57;text-align:center;font:400 15px/1.4 var(--sans);color:var(--paper);letter-spacing:0;white-space:normal}
+.size-guide-table th:first-child{width:18%;text-align:left}
+.size-guide-table thead th{color:var(--gold);font-size:12px;font-weight:700}
+.size-guide-table thead small{display:block;color:var(--muted);font-size:10px;font-weight:400;line-height:1.7}
+.size-guide-table tbody th{font-weight:700}
+.size-guide-table td{font-variant-numeric:tabular-nums}
+.size-guide-table td span{font-size:10px;color:var(--muted)}
+.size-guide-note{padding:12px;border-left:2px solid var(--gold);background:#30243b;font-size:12px;line-height:1.7;margin:16px 0 0}
+.size-guide-source{font-size:10px;line-height:1.7;color:var(--muted);margin:14px 0 0;overflow-wrap:anywhere}
+.size-cut-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.size-cut-photos figure{margin:0;min-width:0}
+.size-cut-photos img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;border-radius:4px;background:#fff}
+.size-cut-photos figcaption{font-size:11px;line-height:1.6;color:var(--muted);margin-top:6px}
+.size-cut-photos>p{grid-column:1/-1;font-size:10px;line-height:1.7;color:var(--muted);margin:0}
+.size-guide-tolerance{margin:18px 0}
+.size-measure-help{border-top:1px solid #4b3d57;margin-top:18px}
+.size-measure-help>summary{padding:16px 0;min-height:48px;color:var(--gold);font-size:13px;cursor:pointer}
+.size-guide-content .size-confirm{margin-top:12px}
+.size-guide-content .size-confirm h3{margin:16px 0 8px}
+@media(max-width:480px){
+ .size-dialog{width:96vw}
+ .size-cut-content{padding:0 12px 12px}
+ .size-cut-name{margin:0 -12px;padding:13px 12px;font-size:15px}
+ .size-cut-name span{font-size:9px}
+ .size-guide-table th,.size-guide-table td{padding:11px 4px;font-size:14px}
+ .size-guide-table thead th{font-size:11px}
+ .size-guide-table thead small{font-size:9px}
+ .size-cut-photos{gap:8px}
+}

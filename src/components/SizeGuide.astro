@@ -1,0 +1,68 @@
+---
+import guide from '../data/size-guide.json';
+const assetBase = import.meta.env.BASE_URL.replace(/\/$/, '');
+const centimeters = (inches) => (Math.round((inches * 2.54 + Number.EPSILON) * 10) / 10).toFixed(1);
+---
+<dialog class="shop-dialog size-dialog" id="size-dialog" aria-labelledby="size-title">
+  <header class="shop-dialog-head">
+    <div><p class="eyebrow">ENCUENTRA TU AJUSTE</p><h2 id="size-title">Guía de tallas.</h2></div>
+    <button type="button" class="shop-close" data-close-dialog="size-dialog" aria-label="Cerrar guía de tallas">×</button>
+  </header>
+  <div class="shop-dialog-body size-guide-content">
+    <p class="size-guide-intro">Elige el corte y compara las medidas con una playera que ya te quede como te gusta.</p>
+    <p class="size-guide-cut-note">Una misma talla cambia de medidas entre corte normal y oversize. Confirma cuál está disponible para tu diseño.</p>
+    <div class="size-cut-picker" role="group" aria-label="Elige el corte de tu playera">
+      {guide.cuts.map((cut, index) => <button type="button" id={`size-cut-button-${cut.key}`} data-size-cut={cut.key} aria-pressed={index === 0 ? 'true' : 'false'} aria-controls={`size-cut-${cut.key}`}>{cut.name}</button>)}
+    </div>
+    <div class="size-cut-options">
+      {guide.cuts.map((cut, index) => (
+        <section class="size-cut" id={`size-cut-${cut.key}`} data-size-cut-panel={cut.key} aria-labelledby={`size-cut-button-${cut.key}`} hidden={index !== 0}>
+          <div class="size-cut-content">
+            <h3 class="size-cut-name">{cut.name} <span>Medidas en cm</span></h3>
+            <p class="size-cut-description">{cut.description}</p>
+            <div class="size-table-wrap">
+              <table class="size-guide-table">
+                <caption>{cut.name} · playera extendida</caption>
+                <thead><tr><th scope="col">Talla</th><th scope="col">A · Ancho <small>axila a axila</small></th><th scope="col">B · Largo <small>hombro a bajo</small></th></tr></thead>
+                <tbody>{cut.sizes.map(row => <tr><th scope="row">{row.size}</th><td>{centimeters(row.width)} <span>cm</span></td><td>{centimeters(row.length)} <span>cm</span></td></tr>)}</tbody>
+              </table>
+            </div>
+            {cut.note && <p class="size-guide-note">{cut.note}</p>}
+            <p class="size-guide-source">Eurocotton · {cut.model}. Conversión de la tabla oficial en pulgadas, redondeada a 0.1 cm.</p>
+            {cut.key === 'oversize' && (
+              <div class="size-cut-photos">
+                <figure><img src={`${assetBase}/assets/eurocotton-oversize-frente.jpg`} alt="Playera oversize negra sin estampar, vista frontal en modelo masculino" width="800" height="800" loading="lazy" decoding="async"/><figcaption>Vista frontal</figcaption></figure>
+                <figure><img src={`${assetBase}/assets/eurocotton-oversize-vista.jpg`} alt="Playera oversize negra sin estampar, vista frontal en modelo femenino" width="800" height="800" loading="lazy" decoding="async"/><figcaption>Referencia de ajuste</figcaption></figure>
+                <p>Fotografías del proveedor · modelo TCOMOVENEG sin estampar. Muestran el corte de la prenda base.</p>
+              </div>
+            )}
+          </div>
+        </section>
+      ))}
+    </div>
+    <p class="size-guide-tolerance">Las medidas son de la prenda, no del cuerpo. Tolerancia del fabricante: ±1.9 cm de ancho y ±2.5 cm de largo.</p>
+    <details class="size-measure-help">
+      <summary>¿Cómo mido mi playera?</summary>
+      <div class="measure-layout">
+        <svg class="measure-shirt" viewBox="0 0 300 270" role="img" aria-labelledby="shirt-title shirt-desc">
+          <title id="shirt-title">Cómo medir una playera extendida</title>
+          <desc id="shirt-desc">A: ancho de axila a axila. B: largo desde el punto alto del hombro hasta el borde inferior.</desc>
+          <defs><marker id="measure-arrow" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto-start-reverse"><path d="M0 0 L7 3.5 L0 7" fill="#dfc38b"/></marker></defs>
+          <path d="M108 35 L75 48 L28 99 L67 129 L85 108 L85 235 L215 235 L215 108 L233 129 L272 99 L225 48 L192 35 Q180 63 150 63 Q120 63 108 35 Z" fill="#282134" stroke="#dfc38b" stroke-width="2"/>
+          <path d="M108 35 Q150 96 192 35" fill="none" stroke="#797089"/>
+          <g stroke="#dfc38b" stroke-width="1.5" marker-start="url(#measure-arrow)" marker-end="url(#measure-arrow)"><path d="M92 126 H208"/><path d="M199 49 V227"/></g>
+          <g fill="#fff0d2" font-family="Arial,sans-serif" font-size="19" font-weight="bold"><text x="144" y="116">A</text><text x="177" y="183">B</text></g>
+        </svg>
+        <div class="measure-steps">
+          <div><span>A</span><h3>Ancho</h3><p>Mide de axila a axila, con la playera extendida y sin estirarla. Es el ancho en plano, no la circunferencia.</p></div>
+          <div><span>B</span><h3>Largo</h3><p>Mide desde el punto alto del hombro, junto al cuello, hasta el borde inferior.</p></div>
+        </div>
+      </div>
+    </details>
+    <div class="size-confirm">
+      <h3>¿Entre dos tallas?</h3>
+      <p>Compártenos tu diseño, el corte y las medidas de tu playera de referencia. Te ayudamos a confirmar el ajuste antes de pedir.</p>
+      <a class="button dark" id="ask-size" href="https://wa.me/525636457353?text=Hola%2C%20quisiera%20ayuda%20para%20elegir%20mi%20talla.%0ADise%C3%B1o%3A%20___%0ACorte%3A%20___%0AMi%20playera%20de%20referencia%20mide%20___%20cm%20de%20ancho%20y%20___%20cm%20de%20largo." target="_blank" rel="noopener">Ayúdame a elegir mi talla ↗</a>
+    </div>
+  </div>
+</dialog>

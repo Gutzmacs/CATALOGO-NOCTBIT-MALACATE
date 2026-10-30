@@ -1,0 +1,108 @@
+/* Shared reading sizes for the catalog, product sheets and shopping dialogs. */
+:root {
+  --muted: #d2cedf;
+}
+
+body { font-size: 16px; line-height: 1.65; }
+.eyebrow { font-size: 12px; line-height: 1.6; letter-spacing: 1.2px; }
+.topline { font-size: 12px; line-height: 1.6; letter-spacing: .7px; }
+.header nav, .header nav .size-guide-button, .nav-cta { font-size: 14px; }
+.button { font-size: 15px; line-height: 1.5; }
+.size-guide-button, .shop-text-button { font-size: 14px; line-height: 1.6; }
+
+/* Collection labels stay readable on the two-column mobile grid. */
+.hero .intro, .section-heading > p, .purchase-heading > p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.collection-brand strong { font-size: 14px; }
+.collection-brand .brand-description { font-size: 14px; line-height: 1.6; color: var(--muted); }
+.collection-brand small { font-size: 12px; line-height: 1.6; }
+.collection-selection, .collection-selection p, .collection-selection button,
+.gallery-tools p, .collection-sound, .designer-filters button {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.collection-selection p, .gallery-tools p { color: var(--muted); }
+#designer-status { font-size: 14px; line-height: 1.6; }
+.hero-meta { font-size: 15px; }
+.hero-meta small { font-size: 12px; line-height: 1.6; letter-spacing: .5px; color: var(--muted); }
+.art-top, .hero-inspect { font-size: 12px; line-height: 1.6; letter-spacing: .5px; }
+.product > .designer-credit { font-size: 12px; line-height: 1.6; letter-spacing: .3px; color: var(--gold); }
+.product-sheet-link { font: 600 14px/1.6 var(--sans); min-height: 48px; }
+.image-label, .photo-kind, .collection .product > .season-tag { font-size: 12px; line-height: 1.6; letter-spacing: 0; }
+
+/* Product help uses the same reading size as the main description. */
+.detail-header > a { font-size: 14px; }
+.detail-header small { font-size: 12px; line-height: 1.6; letter-spacing: .5px; }
+.detail-description, .stock-note, .detail-extra, .detail-help,
+.size-consult-note, .purchase-terms p, .info-tab-panel {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.fit-summary p { font-size: 15px; line-height: 1.65; }
+.detail-info legend, .detail-price span { font-size: 15px; line-height: 1.6; letter-spacing: .3px; }
+.detail-sizes span { font-size: 16px; }
+.detail-sizes small { font-size: 12px; line-height: 1.4; }
+.quantity-field { font-size: 12px; line-height: 1.6; letter-spacing: .5px; }
+.quantity-field input { font: 16px/1.5 var(--sans); }
+.detail-info #order-whatsapp { font-size: 14px; line-height: 1.6; }
+.product-share button, .product-share a { font: 14px/1.6 var(--sans); }
+.product-share p { font-size: 14px; line-height: 1.65; }
+.info-tab-list button { font-size: 15px; line-height: 1.5; }
+
+/* Photo captions wrap naturally instead of shrinking to fit. */
+#photo-caption { font: 14px/1.65 var(--sans); color: var(--muted); }
+.photo-thumbs { display: grid; grid-template-columns: repeat(auto-fit, minmax(124px, 1fr)); gap: 12px; }
+.photo-thumbs .photo-thumb {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  grid-template-rows: 90px auto;
+  gap: 10px;
+  padding: 8px;
+}
+.photo-thumbs .photo-thumb img { height: 90px; }
+.photo-thumb span { font: 14px/1.5 var(--sans); overflow-wrap: normal; }
+.mockup-note { font-size: 14px; line-height: 1.65; }
+
+/* Sizes, order contents and delivery conditions. */
+.shop-dialog-head .eyebrow { font-size: 12px; }
+.order-line p, .order-line .order-finish, .order-line .order-size-note,
+.cart-persistence, .cart-footer > p, .cart-footer .cart-disclaimer {
+  font-size: 14px;
+  line-height: 1.65;
+}
+.order-line-total { font-size: 16px; line-height: 1.6; }
+.cart-subtotal > span { font-size: 16px; }
+.order-float { font-size: 14px; line-height: 1.5; }
+.size-guide-intro, .size-guide-content .measure-steps p, .size-confirm p { font-size: 16px; line-height: 1.65; }
+.size-cut-description, .size-guide-note, .size-guide-source, .size-guide-tolerance,
+.size-cut-photos figcaption, .size-cut-photos > p { font-size: 14px; line-height: 1.65; }
+.size-cut-name span { font-size: 12px; line-height: 1.5; white-space: normal; }
+.size-guide-table th, .size-guide-table td { font-size: 16px; line-height: 1.5; }
+.size-guide-table thead th { font-size: 14px; }
+.size-guide-table thead small, .size-guide-table td span { font-size: 12px; line-height: 1.5; }
+.size-measure-help > summary, .size-confirm .button { font-size: 15px; line-height: 1.6; }
+
+/* Secondary page information keeps its hierarchy without tiny text. */
+body > footer p, body > footer > a { font-size: 14px; line-height: 1.6; }
+.adventure-links p, .adventure-links a, .adventure-cover small,
+.castle-hint, .game-credit, .controller-help p { font-size: 14px; line-height: 1.65; }
+
+@media (max-width: 700px) {
+  .topline { padding-inline: 12px; }
+  .hero-meta { flex-wrap: wrap; gap: 16px 20px; }
+  .hero-meta > span { min-width: 0; }
+  .product > .designer-credit { min-height: 38px; }
+  .product-top h3 { font-size: 19px; line-height: 1.35; }
+  .collection .product-top { min-height: 52px; }
+  .product-sheet-link { padding: 12px 4px; }
+  .info-tab-list button { padding-inline: 10px; font-size: 15px; }
+  .detail-info .info-tab-list button { padding-inline: 6px; }
+  .photo-thumbs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .size-guide-content .measure-steps { grid-template-columns: 1fr; }
+  .cart-subtotal { flex-wrap: wrap; }
+}

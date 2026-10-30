@@ -35,7 +35,8 @@
         "height": 1866,
         "displaySrc": "assets/ninja-close-hd.webp"
       }
-    ]
+    ],
+    "fit": "Corte oversize: silueta holgada, hombros caídos y mangas amplias. Compara las medidas de la guía con una playera que ya te quede como te gusta."
   },
   {
     "key": "japones",
@@ -87,7 +88,8 @@
         "height": 1404,
         "displaySrc": "assets/japones-detalle-espalda.webp"
       }
-    ]
+    ],
+    "fit": "Corte oversize: silueta holgada, hombros caídos y mangas amplias. Compara las medidas de la guía con una playera que ya te quede como te gusta."
   },
   {
     "key": "espadas",
@@ -132,7 +134,8 @@
         "height": 1536,
         "displaySrc": "assets/espadas-detalle-parche.webp"
       }
-    ]
+    ],
+    "fit": "Corte oversize: silueta holgada, hombros caídos y mangas amplias. Compara las medidas de la guía con una playera que ya te quede como te gusta."
   },
   {
     "key": "juggernaut",
@@ -174,7 +177,7 @@
         "imageType": "Mockup"
       }
     ],
-    "fit": "Estilo oversize: holgado, con hombros caídos y mangas amplias. La galería muestra propuestas unisex y de mujer; confirma el corte disponible y sus medidas antes de pedir."
+    "fit": "Corte oversize: silueta holgada, hombros caídos y mangas amplias. Compara las medidas de la guía con una playera que ya te quede como te gusta."
   },
   {
     "key": "muertos",
@@ -198,7 +201,8 @@
         "height": 1536,
         "displaySrc": "assets/nai-dia-de-muertos-original.webp"
       }
-    ]
+    ],
+    "fit": "Corte oversize: silueta holgada, hombros caídos y mangas amplias. Compara las medidas de la guía con una playera que ya te quede como te gusta."
   },
   {
     "key": "marco-de-angeles",
@@ -206,10 +210,17 @@
     "brand": "NOCTBIT",
     "author": "Seb",
     "description": "Playera negra oversize con un marco de ángeles en la espalda, emblema guinda «SUMMA BLASPHEMIA» en el pecho y detalle de manga.",
-    "fit": "Corte oversize: silueta holgada, hombros caídos y mangas amplias. Confirma las medidas y la disponibilidad de tu talla antes de pedir.",
+    "fit": "Corte oversize: silueta holgada, hombros caídos y mangas amplias. Compara las medidas de la guía con una playera que ya te quede como te gusta.",
     "finishType": "Con bordado",
     "finish": "Bordado en el pecho y detalle de manga; marco de ángeles en la espalda.",
-    "prices": {},
+    "prices": {
+      "CH": 500,
+      "M": 500,
+      "G": 520,
+      "XL": 540,
+      "2XL": 560,
+      "3XL": 570
+    },
     "photos": [
       {
         "src": "assets/marco-de-angeles-espalda-corregida.png",

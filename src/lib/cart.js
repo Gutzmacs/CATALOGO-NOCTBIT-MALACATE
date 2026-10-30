@@ -36,5 +36,5 @@ export const clearCart=()=>$cart.set([]);
 export const totalFor=()=>cartLines().reduce((sum,line)=>sum+line.lineTotal,0);
 export function orderMessage(){
  const lines=cartLines();
- return ['Hola, me gustaría confirmar este pedido de NOCTBIT × Malacate:','',...lines.map((line,i)=>(i+1)+'. '+line.product.name+' · '+line.product.brand+'\nTalla '+line.size+' · '+line.quantity+' pieza(s) × $'+line.unitPrice+' = $'+line.lineTotal+' MXN\n'+finishFor(line.product)),'','Subtotal de prendas: $'+totalFor()+' MXN.','Total de piezas: '+lines.reduce((sum,line)=>sum+line.quantity,0)+'.','¿Me confirmas disponibilidad, tallas y entrega en hasta 7 días?','Si requiere envío, por favor cotízalo aparte.'].join('\n');
+ return ['Hola, me gustaría confirmar este pedido de NOCTBIT × Malacate:','',...lines.map((line,i)=>(i+1)+'. '+line.product.name+' · '+line.product.brand+'\nCorte oversize · Talla '+line.size+' · '+line.quantity+' pieza(s) × $'+line.unitPrice+' = $'+line.lineTotal+' MXN\n'+finishFor(line.product)),'','Subtotal de prendas: $'+totalFor()+' MXN.','Total de piezas: '+lines.reduce((sum,line)=>sum+line.quantity,0)+'.','Pago contra entrega por el momento.','¿Me confirmas disponibilidad, tallas y entrega en hasta 7 días?','Si requiere envío, por favor cotízalo aparte.'].join('\n');
 }

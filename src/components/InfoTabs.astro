@@ -1,0 +1,17 @@
+---
+const {id,tabs}=Astro.props;
+---
+<div class="info-tabs" data-info-tabs>
+ <div class="info-tab-list" role="tablist" aria-label="Información de la tienda">
+ {tabs.map((tab,i)=><button type="button" role="tab" id={`${id}-${tab.key}-tab`} aria-controls={`${id}-${tab.key}`} aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1}>{tab.label}</button>)}
+ </div>
+ {tabs.map(tab=><section class="info-tab-panel" role="tabpanel" id={`${id}-${tab.key}`} aria-labelledby={`${id}-${tab.key}-tab`} tabindex="0"><slot name={tab.key}/></section>)}
+</div>
+<script>
+ document.querySelectorAll('[data-info-tabs]').forEach(group=>{
+  const tabs=[...group.querySelectorAll('[role="tab"]')];
+  const activate=(current,focus=false)=>tabs.forEach(tab=>{const selected=tab===current;tab.setAttribute('aria-selected',String(selected));tab.tabIndex=selected?0:-1;document.getElementById(tab.getAttribute('aria-controls')).hidden=!selected;if(selected&&focus)tab.focus();});
+  tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>activate(tab));tab.addEventListener('keydown',event=>{let next;if(event.key==='ArrowRight')next=(i+1)%tabs.length;if(event.key==='ArrowLeft')next=(i+tabs.length-1)%tabs.length;if(event.key==='Home')next=0;if(event.key==='End')next=tabs.length-1;if(next!==undefined){event.preventDefault();activate(tabs[next],true);}});});
+  activate(tabs[0]);
+ });
+</script>

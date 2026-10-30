@@ -1,23 +1,12 @@
 ---
-import products from '../data/products.json';
-import {finishTypeFor} from '../lib/product-finish.js';
-const formatNames = new Intl.ListFormat('es-MX', {type:'conjunction'});
-const embroideredNames = formatNames.format(products.filter(p=>finishTypeFor(p)==='Con bordado').map(p=>p.name));
-const dtfNames = formatNames.format(products.filter(p=>finishTypeFor(p)==='Solo DTF').map(p=>p.name));
+import InfoTabs from './InfoTabs.astro';
 ---
 <section class="purchase section" id="como-comprar" aria-labelledby="purchase-title">
- <div class="purchase-heading"><div><p class="eyebrow">DE TU SELECCIÓN A TU PLAYERA</p><h2 id="purchase-title">Así haces<br/><em>tu pedido.</em></h2></div><p>Elige tus diseños. Confirmamos contigo los detalles por WhatsApp antes de cerrar el pedido.</p></div>
- <ol class="purchase-steps">
-  <li><span class="purchase-number" aria-hidden="true">01</span><h3>Elige tus playeras</h3><p>Toca la foto de un diseño y elige su talla y cantidad. Puedes combinar varias playeras en <strong>Mi pedido</strong> y revisar el subtotal.</p><a href="#coleccion">Elegir mi playera ↗</a></li>
-  <li><span class="purchase-number" aria-hidden="true">02</span><h3>Consulta por WhatsApp</h3><p>Abre <strong>Mi pedido</strong> y pulsa <strong>Consultar pedido por WhatsApp</strong>. Revisa el mensaje y envíalo para confirmar tallas y disponibilidad.</p><button type="button" data-open-order>Revisar mi pedido ↗</button></li>
-  <li><span class="purchase-number" aria-hidden="true">03</span><h3>Acordamos los detalles</h3><p>Por el momento, el pago es contra entrega. Confirma con nosotros el total y cómo recibirás tus prendas. Agregar al pedido no confirma una compra.</p><a href="https://wa.me/525636457353?text=Hola%2C%20quiero%20confirmar%20las%20opciones%20de%20pago%20y%20entrega%20de%20mi%20pedido." target="_blank" rel="noopener">Consultar pago y entrega ↗</a></li>
- </ol>
- <div class="purchase-delivery"><span class="eyebrow">ENTREGA</span><p><strong>Hasta 7 días</strong>, con disponibilidad por confirmar. Comparte tu zona por WhatsApp para confirmar cobertura y acordar la entrega. El envío se cotiza aparte; confirmamos su costo y el total antes de cerrar tu pedido.</p></div>
- <div class="purchase-questions"><div><p class="eyebrow">ANTES DE PEDIR</p><h3>Resolvemos tus dudas.</h3><p>Cada playera tiene su precio y acabado incluidos.</p></div><div class="purchase-faq">
-  <details><summary>¿Cómo sé qué talla elegir?</summary><p>Compara el ancho y el largo de una playera que te quede como te gusta. Consulta la guía y compártenos tus medidas para confirmar las disponibles del diseño que elegiste.</p><button type="button" data-open-size-guide>Ver guía de tallas ↗</button></details>
-  <details><summary>¿Cuáles llevan bordado?</summary><p>{embroideredNames} incluyen los bordados descritos en sus fichas. {dtfNames} llevan solo DTF. Consulta los detalles y el precio por talla antes de pedir.</p></details>
-  <details><summary>¿Cómo puedo pagar?</summary><p>Por el momento, el pago es contra entrega. Confirma por WhatsApp el total y los detalles de la entrega antes de cerrar tu pedido.</p></details>
-  <details><summary>¿El precio incluye el envío?</summary><p>El subtotal muestra únicamente las prendas. Si tu pedido requiere envío, compártenos tu zona por WhatsApp. Confirmamos cobertura, costo del envío y total antes de cerrar el pedido.</p></details>
-  <details><summary>¿Cuánto tarda mi pedido?</summary><p>La entrega puede tardar hasta 7 días, con disponibilidad por confirmar. Al consultar tu pedido acordamos contigo los detalles de la entrega.</p></details>
- </div></div>
+ <div class="purchase-heading"><div><p class="eyebrow">TODO LO ESENCIAL</p><h2 id="purchase-title">Antes de pedir.</h2></div><p>Elige playera y talla. Confirmamos tu pedido por WhatsApp.</p></div>
+ <InfoTabs id="comprar" tabs={[{key:'pedido',label:'Cómo pedir'},{key:'tallas',label:'Tallas'},{key:'entrega',label:'Pago y envío'},{key:'acabados',label:'Acabados'}]}>
+  <div slot="pedido"><ol class="short-steps"><li>Elige tu playera, talla y cantidad.</li><li>Revisa el subtotal en <strong>Mi pedido</strong>.</li><li>Envía la consulta por WhatsApp para confirmar disponibilidad y total.</li></ol><button class="size-guide-button" type="button" data-open-order>Ver mi pedido ↗</button></div>
+  <div slot="tallas"><p>Todas son oversize. Compara ancho y largo con una playera que te quede bien. Para 3XL, consulta medidas y disponibilidad.</p><button class="size-guide-button" type="button" data-open-size-guide>Ver guía de tallas ↗</button></div>
+  <div slot="entrega"><p><strong>Pago contra entrega.</strong> Entrega en hasta 7 días, con disponibilidad por confirmar.</p><p>El envío se cotiza aparte según tu zona. Confirmamos cobertura y total por WhatsApp antes de cerrar el pedido.</p></div>
+  <div slot="acabados"><p>Espadas y Marco de Ángeles incluyen los bordados indicados en su ficha. Los demás diseños llevan estampado DTF.</p><p>El acabado está incluido en el precio de cada playera.</p></div>
+ </InfoTabs>
 </section>

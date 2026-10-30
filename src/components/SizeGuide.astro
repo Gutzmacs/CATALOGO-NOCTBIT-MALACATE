@@ -28,12 +28,12 @@ const centimeters = (inches) => (Math.round((inches * 2.54 + Number.EPSILON) * 1
               </table>
             </div>
             {cut.note && <p class="size-guide-note">{cut.note}</p>}
-            <p class="size-guide-source">Eurocotton · {cut.model}. Conversión de la tabla oficial en pulgadas, redondeada a 0.1 cm.</p>
+            <p class="size-guide-source">Medidas de referencia en centímetros, redondeadas a 0.1 cm.</p>
             {cut.key === 'oversize' && (
               <div class="size-cut-photos">
                 <figure><img src={`${assetBase}/assets/eurocotton-oversize-frente.jpg`} alt="Playera oversize negra sin estampar, vista frontal en modelo masculino" width="800" height="800" loading="lazy" decoding="async"/><figcaption>Vista frontal</figcaption></figure>
                 <figure><img src={`${assetBase}/assets/eurocotton-oversize-vista.jpg`} alt="Playera oversize negra sin estampar, vista frontal en modelo femenino" width="800" height="800" loading="lazy" decoding="async"/><figcaption>Referencia de ajuste</figcaption></figure>
-                <p>Fotografías del proveedor · modelo TCOMOVENEG sin estampar. Muestran el corte de la prenda base.</p>
+                <p>Referencia de la playera base sin estampar. Las fotos muestran el corte y el ajuste.</p>
               </div>
             )}
           </div>

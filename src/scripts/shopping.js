@@ -55,3 +55,5 @@ document.querySelectorAll('[data-add-order]').forEach(button=>button.addEventLis
  try{addItem(key,size,quantityInput?Number(quantityInput.value):1);announce(productFor(key).name+', talla '+size+', agregada a tu carrito.');document.querySelector('#gallery')?.close();openDialog(cartDialog)}catch(error){announce(error.message)}
 }));
 try{const key='noctbit-storage-check';localStorage.setItem(key,'1');localStorage.removeItem(key)}catch{document.querySelector('#cart-storage-note').textContent='Tu navegador no permite guardar la selección. Mantenla abierta mientras armas tu pedido.'}
+document.documentElement.dataset.shoppingReady='true';
+document.dispatchEvent(new Event('shopping:ready'));

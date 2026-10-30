@@ -6,6 +6,7 @@
   const status = document.querySelector('#designer-status');
   const grid = document.querySelector('#designer-gallery');
   const heroImage = document.querySelector('.hero-photos img');
+  const heroPhotoLink = document.querySelector('.hero-photos');
   const heroTitle = document.querySelector('.hero-art .art-top span:first-child');
   const heroCategory = document.querySelector('.hero-art .art-top span:last-child');
   const heroButton = document.querySelector('.hero-inspect');
@@ -13,12 +14,12 @@
     seb: {
       image: 'assets/ninja-back-hd.webp', title: 'NINJA', category: 'NOCTBIT / SEB', gallery: 'ninja',
       alt: 'Vista trasera de la playera Ninja de Seb, con guerrero y bufanda roja',
-      label: 'Ver fotos de Ninja, diseño de Seb'
+      label: 'Ver playera Ninja, diseño de Seb'
     },
     nai: {
       image: 'assets/japones-front-hd.webp', title: 'JAPONÉS ROJO', category: 'MALACATE / NAI', gallery: 'japones',
       alt: 'Playera negra de Nai con dibujos rojos, flores y gato de la fortuna, vista frontal con modelo',
-      label: 'Ver fotos de Japonés Rojo, diseño de Nai'
+      label: 'Ver playera Japonés Rojo, diseño de Nai'
     }
   };
   const colors = { all: '#0b0b18', seb: '#110d23', nai: '#24130f' };
@@ -30,7 +31,9 @@
     heroImage.alt = cover.alt;
     heroTitle.textContent = cover.title;
     heroCategory.textContent = cover.category;
-    heroButton.dataset.gallery = cover.gallery;
+    heroButton.href = 'ficha-' + cover.gallery + '.html';
+    heroPhotoLink.href = heroButton.href;
+    heroPhotoLink.setAttribute('aria-label', cover.label);
     heroButton.setAttribute('aria-label', cover.label);
     cards.forEach(card => { card.hidden = owner !== 'all' && card.dataset.owner !== owner; });
     controls.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.designer === owner)));

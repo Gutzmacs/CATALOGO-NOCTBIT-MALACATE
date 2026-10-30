@@ -1,40 +1,4 @@
 'use strict';
-const PRICES={"ninja":{"CH":380,"M":380,"G":400,"XL":420,"2XL":440,"3XL":450},"japones":{"CH":380,"M":380,"G":400,"XL":420,"2XL":440,"3XL":450},"espadas":{"CH":500,"M":500,"G":520,"XL":540,"2XL":560,"3XL":570},"juggernaut":{"CH":380,"M":380,"G":400,"XL":420,"2XL":440,"3XL":450},"muertos":{"CH":350,"M":350,"G":350,"XL":380,"2XL":380,"3XL":380}};
-const MODELS={"ninja":{"name":"Ninja","finish":"Acabado incluido: solo DTF.","images":[["ninja-lookbook-hd.webp","Frente, espalda y detalles"],["ninja-back-hd.webp","Vista trasera"],["ninja-close-hd.webp","Frente y acercamiento"]]},"japones":{"name":"Japonés Rojo","finish":"Acabado incluido: solo DTF.","images":[["japones-front-hd.webp","Vista frontal"],["japones-back-hd.webp","Vista trasera"],["japones-detalle-manga.webp","Detalle de manga"],["japones-detalle-frente.webp","Detalle frontal"],["japones-detalle-espalda.webp","Detalle trasero"]]},"espadas":{"name":"Espadas","finish":"Bordados de pecho y manga incluidos.","images":[["espadas-lookbook-original.webp","Frente, espalda y detalles"],["espadas-back-original.webp","Vista trasera"],["espadas-detalle-emblema.webp","Emblema del pecho"],["espadas-detalle-parche.webp","Parche de manga"]]},"juggernaut":{"name":"Juggernaut","finish":"Acabado incluido: solo DTF.","images":[["camiseta-negra-con-estampado-comic.webp","Vista frontal · oversize unisex"],["camiseta-oversized-negra-con-estampado-comic.webp","Vista frontal · oversize de mujer"],["seb-juggernaut-original.webp","Referencia anterior del diseño"]]},"muertos":{"name":"Hora de pan de muerto","finish":"Acabado incluido: solo DTF.","images":[["nai-dia-de-muertos-original.webp","Imagen completa"]]},"marco-de-angeles":{"name":"Marco de Ángeles","finish":"Bordado en el pecho y detalle de manga; marco de ángeles en la espalda.","images":[["marco-de-angeles-espalda-corregida.webp","Vista trasera · marco de ángeles"],["marco-de-angeles-frente.webp","Vista frontal · emblema y manga"],["marco-de-angeles-detalles.webp","Espalda y acercamientos del diseño"],["marco-de-angeles-bordado.webp","Detalle del bordado del pecho"]]}};
-const form=document.querySelector('#config-form');
-const total=document.querySelector('#total');
-const gallery=document.querySelector('#gallery');
-const status=document.querySelector('#copy-status');
-let activeModel='ninja';
-function getSelection(){const data=new FormData(form);const size=data.get('size');const design=data.get('design');return{quantity:Number(data.get('quantity')||1),model:MODELS[design].name,size,finish:MODELS[design].finish,price:PRICES[design]?.[size]??null};}
-function updatePrice(){
- const selection=getSelection();
- const pending=selection.price===null;
- const add=form.querySelector('[data-add-order]');
- add.disabled=pending;add.textContent=pending?'Consulta el precio antes de agregar':'Agregar al carrito ↗';
- document.querySelector('#finish-description').textContent=pending?'Consulta el precio y la disponibilidad de este diseño en tu talla.':selection.model+' · Talla '+selection.size+' · $'+selection.price+' MXN.';
- document.querySelector('#embroidery-hint').hidden=false;
- document.querySelector('#embroidery-hint').textContent=selection.finish;
- total.classList.toggle('price-on-request',pending);
- total.replaceChildren(document.createTextNode(pending?'Consultar precio':'$'+selection.price+' '));
- if(!pending){const unit=document.createElement('small');unit.textContent='MXN';total.append(unit);}
- status.textContent='';document.querySelector('#copy-fallback').hidden=true;
-}
-form.addEventListener('change',updatePrice);
-form.addEventListener('submit',event=>event.preventDefault());
-function openGallery(key,initialIndex=0){activeModel=key;const model=MODELS[key];document.querySelector('#gallery-title').textContent=model.name;const content=document.querySelector('#gallery-content');content.classList.remove('gallery-zoom');document.querySelector('#gallery-zoom')?.remove();content.replaceChildren();document.querySelector('#gallery-tabs')?.remove();const tabs=document.createElement('div');tabs.id='gallery-tabs';tabs.className='gallery-tabs';tabs.setAttribute('role','group');tabs.setAttribute('aria-label','Vistas de '+model.name);model.images.forEach(([file,caption],index)=>{const tab=document.createElement('button');tab.textContent=caption;tab.setAttribute('aria-pressed',index===initialIndex?'true':'false');tab.addEventListener('click',()=>{content.classList.remove('gallery-zoom');document.querySelector('#gallery-zoom')?.setAttribute('aria-pressed','false');content.querySelectorAll('figure').forEach((figure,j)=>figure.hidden=j!==index);tabs.querySelectorAll('button').forEach((button,j)=>button.setAttribute('aria-pressed',j===index?'true':'false'));});tabs.append(tab);});content.before(tabs);for(const[file,caption]of model.images){const figure=document.createElement('figure');const img=document.createElement('img');img.src='assets/'+file;img.alt=caption+' de '+model.name;const label=document.createElement('figcaption');label.textContent=caption;figure.append(img,label);figure.hidden=content.children.length!==initialIndex;content.append(figure);}const zoom=document.createElement('button');zoom.id='gallery-zoom';zoom.className='zoom-detail-button';zoom.textContent='Ampliar / ajustar detalle';zoom.setAttribute('aria-pressed','false');zoom.addEventListener('click',()=>{const on=content.classList.toggle('gallery-zoom');zoom.setAttribute('aria-pressed',String(on));});content.before(zoom);const purchase=document.querySelector('#gallery-purchase');purchase.elements.design.value=key;purchase.elements.size.value='';purchase.dispatchEvent(new Event('change'));gallery.showModal();document.body.classList.add('modal-open');window.NinjaAmbience?.open(key);}
-document.querySelectorAll('[data-gallery]').forEach(button=>button.addEventListener('click',()=>openGallery(button.dataset.gallery,Number(button.dataset.view||0))));
-document.querySelector('#close-gallery').addEventListener('click',()=>gallery.close());
-gallery.addEventListener('close',()=>document.body.classList.remove('modal-open'));
-gallery.addEventListener('click',event=>{const rect=gallery.getBoundingClientRect();if(event.target===gallery&&(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom))gallery.close();});
-document.querySelector('#choose-design').addEventListener('click',()=>{location.href='ficha-'+activeModel+'.html';});
-document.querySelector('#copy').addEventListener('click',async()=>{const quantity=form.querySelector('[name="quantity"]');if(quantity&&!quantity.reportValidity())return;const s=getSelection();const message=`Hola, me interesa una playera de NOCTBIT × Malacate.\nDiseño: ${s.model}\nTalla: ${s.size}\nCantidad: ${s.quantity}\nAcabado: ${s.finish}\n${s.price===null?'Precio: por consultar.':'Precio del catálogo: $'+s.price+' MXN por playera.'}\n¿Me confirmas disponibilidad y cómo hacer mi pedido?`;try{await navigator.clipboard.writeText(message);status.textContent='Selección copiada. Pégala en tu mensaje.';}catch{const fallback=document.querySelector('#copy-fallback');fallback.value=message;fallback.hidden=false;fallback.focus();fallback.select();status.textContent='Copia este texto para compartir tu elección.';}});
-// Carry the chosen product and size from its individual sheet.
-const requested=new URLSearchParams(location.search);
-if(MODELS[requested.get('design')]) form.elements.design.value=requested.get('design');
-const requestedSize=[...form.querySelectorAll('[name="size"]')].find(input=>input.value===requested.get('size'));
-if(requestedSize) requestedSize.checked=true;
-updatePrice();
 
 // Pixel animation and mouse-play engine. All overlays ignore pointer events.
 (() => {

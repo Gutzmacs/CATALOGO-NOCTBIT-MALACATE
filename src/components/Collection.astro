@@ -1,7 +1,22 @@
 ---
 import products from "../data/products.json";
-import ProductPurchase from "./ProductPurchase.astro";
 ---
-<section class="collection section" id="coleccion"><div class="section-heading"><div><p class="eyebrow">ENCUENTRA TU DISEÑO</p><h2>Elige tu diseño.</h2></div><p>Explora sus vistas y detalles.</p></div>
-<div class="gallery-toolbar"><div aria-label="Filtrar galería por diseñador" class="designer-filters" role="group"><button aria-pressed="true" data-designer="all" type="button">Ver todos</button><button aria-pressed="false" data-designer="seb" type="button">NOCTBIT <span>{products.filter(p=>p.author==='Seb').length}</span></button><button aria-pressed="false" data-designer="nai" type="button">Malacate <span>{products.filter(p=>p.author==='Nai').length}</span></button></div><div class="gallery-tools"><p id="designer-status" role="status">{products.length} diseños · NOCTBIT + Malacate</p><button aria-label="Silenciar sonido de las colecciones" aria-pressed="true" class="collection-sound" id="collection-sound" type="button">♪ Sonido activado</button></div></div><div class="product-grid" id="designer-gallery">
-{products.map(p => <article class="product" data-owner={p.author==='Nai'?'nai':'seb'}><p class="designer-credit">{p.brand} · Por {p.author}</p><button aria-label={`Ver fotos de ${p.name}`} class={`product-image ${p.key}`} data-gallery={p.key}><img alt={`${p.name} · ${p.photos[0].alt}`} loading="lazy" decoding="async" src={p.photos[0].displaySrc}/><span class="image-label">{p.photos[0].imageType ? p.photos[0].imageType+" · " : ""}{p.photos[0].alt}</span><span aria-hidden="true" class="zoom">↗</span></button><div class="product-top"><h3>{p.name}</h3><span>{Object.keys(p.prices).length?'Desde $'+Math.min(...Object.values(p.prices)):'Consultar precio'}</span></div><p>{p.description}</p>{p.key==='muertos'&&<span class="season-tag">De temporada · Día de Muertos</span>}<div class="detail-thumbnails">{p.photos.slice(2).map((photo,i)=><button aria-label={`Ampliar ${photo.alt}`} data-gallery={p.key} data-view={i+2}><img alt={photo.alt} loading="lazy" src={photo.displaySrc}/><span>{photo.alt} ↗</span></button>)}</div><ProductPurchase product={p}/><button class="text-button" data-gallery={p.key}>Ver fotos ↗</button><a class="product-sheet-link" href={`ficha-${p.key}.html`}>Ver ficha · tallas y precio ↗</a></article>)}</div></section>
+<section class="collection section" id="coleccion">
+  <div class="section-heading" id="elige"><div><p class="eyebrow">ENCUENTRA TU DISEÑO</p><h2>Elige tu diseño.</h2></div><p>Toca una playera para ver sus fotos, tallas y detalles.</p></div>
+  <div class="gallery-toolbar">
+    <div aria-label="Filtrar galería por diseñador" class="designer-filters" role="group"><button aria-pressed="true" data-designer="all" type="button">Ver todos</button><button aria-pressed="false" data-designer="seb" type="button">NOCTBIT <span>{products.filter(p=>p.author==='Seb').length}</span></button><button aria-pressed="false" data-designer="nai" type="button">Malacate <span>{products.filter(p=>p.author==='Nai').length}</span></button></div>
+    <div class="gallery-tools"><p id="designer-status" role="status">{products.length} diseños · NOCTBIT + Malacate</p><button aria-label="Silenciar sonido de las colecciones" aria-pressed="true" class="collection-sound" id="collection-sound" type="button">♪ Sonido activado</button></div>
+  </div>
+  <div class="product-grid" id="designer-gallery">
+    {products.map(p => <article class="product" data-owner={p.author==='Nai'?'nai':'seb'}>
+      <p class="designer-credit">{p.brand} · Por {p.author}</p>
+      <a aria-label={'Ver playera '+p.name} class={'product-image '+p.key} href={'ficha-'+p.key+'.html'}>
+        <img alt={p.name+' · '+p.photos[0].alt} loading="lazy" decoding="async" src={p.photos[0].displaySrc}/>
+        <span class="image-label">{p.photos[0].imageType ? p.photos[0].imageType+" · " : ""}{p.photos[0].alt}</span><span aria-hidden="true" class="zoom">↗</span>
+      </a>
+      <div class="product-top"><h3>{p.name}</h3><span>{Object.keys(p.prices).length?'Desde $'+Math.min(...Object.values(p.prices))+' MXN':'Consultar precio'}</span></div>
+      {p.key==='muertos'&&<span class="season-tag">De temporada · Día de Muertos</span>}
+      <a class="product-sheet-link" href={'ficha-'+p.key+'.html'}>Ver playera <span aria-hidden="true">↗</span></a>
+    </article>)}
+  </div>
+</section>

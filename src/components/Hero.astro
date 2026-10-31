@@ -1,4 +1,32 @@
-<section class="hero" id="inicio">
-<div class="hero-copy"><p class="eyebrow"><span class="small-star">✦</span> DOS MIRADAS · UNA COLECCIÓN</p><h1 class="brand-title">Dos miradas.<br/>Un mismo origen.</h1><div aria-label="Elige colección" class="collection-brands" role="group"><button aria-label="Explorar NOCTBIT" aria-pressed="false" class="collection-brand seb" data-designer="seb"><span class="brand-art"><img decoding="async" alt="NOCTBIT, monograma NB naranja y azul" src="assets/noctbit-logo.png"/></span><strong>NOCTBIT</strong><span class="brand-description">Videojuegos, píxeles y arte gótico.</span><small>POR SEB ↗</small></button><button aria-label="Explorar Malacate" aria-pressed="false" class="collection-brand nai" data-designer="nai"><span class="brand-art"><img decoding="async" alt="Malacate" src="assets/malacate-mark.webp"/></span><strong>Malacate</strong><span class="brand-description">Ilustración, cultura pop y expresión textil.</span><small>POR NAI ↗</small></button></div><div class="collection-selection"><p id="active-collection" role="status">Ambas colecciones</p><button aria-pressed="true" data-designer="all" type="button">Ver todos los diseños ↗</button></div><p class="intro">Playeras oversize de algodón. Elige tu playera y después tu talla para ver el precio exacto.</p><a class="button dark" href="#coleccion">Elegir playera <span aria-hidden="true">↗</span></a><div class="hero-meta"><span>100%<br/><small>ALGODÓN</small></span><span>CH — 3XL<br/><small>RANGO DE TALLAS</small></span><span>Tu diseño + talla<br/><small>PRECIO DE TU PLAYERA</small></span></div></div>
-<div class="hero-art"><div class="art-top"><span>NINJA</span><span>PIXEL ART / OVERSIZE</span></div><a class="hero-photos" href="ficha-ninja.html" aria-label="Ver playera Ninja"><img decoding="async" alt="Vista trasera completa de la playera Ninja, ilustración pixelada con bufanda roja" fetchpriority="high" src="assets/ninja-back-hd.webp"/></a><a class="hero-inspect" href="ficha-ninja.html">VER PLAYERA <span aria-hidden="true">↗</span></a><span aria-hidden="true" class="vertical-tag">EQUIPA TU ESTILO</span></div>
+---
+import products from '../data/products.json';
+import {coverPhotoFor} from '../lib/product-photos.js';
+const featured = [
+  {key:'ninja',tone:'pixel',line:'De aquí a otros mundos.'},
+  {key:'marco-de-angeles',tone:'gothic',line:'Arte que llevas contigo.'},
+  {key:'japones',tone:'red',line:'Ilustración con carácter.'},
+].map(scene=>({...scene,product:products.find(product=>product.key===scene.key)}));
+---
+<section class="featured" id="inicio" aria-labelledby="featured-title">
+  <div class="featured-intro">
+    <div><p class="eyebrow">DOS MIRADAS · UNA COLECCIÓN</p><h1 id="featured-title">Diseños que cuentan algo.</h1></div>
+    <p>Playeras oversize de algodón. Encuentra la que va contigo.</p>
+  </div>
+  <div class="featured-carousel" data-showcase role="region" aria-roledescription="carrusel" aria-label="Diseños destacados" tabindex="0">
+    <div class="featured-stage" aria-live="off">
+      {featured.map(({product:p,tone,line},i)=>{
+        const photo=coverPhotoFor(p);
+        return <article class="featured-slide" data-featured-slide data-key={p.key} data-owner={p.author==='Nai'?'nai':'seb'} data-tone={tone} hidden={i!==0} role="group" aria-roledescription="diapositiva" aria-label={`${i+1} de ${featured.length}: ${p.name}`}>
+          <div class="featured-atmosphere" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="featured-copy"><p class="featured-brand">{p.brand} <span>POR {p.author.toUpperCase()}</span></p><h2>{p.name}</h2><p class="featured-line">{line}</p><a class="button featured-cta" href={`ficha-${p.key}.html`}>Ver playera <span aria-hidden="true">↗</span></a></div>
+          <a class="featured-photo" href={`ficha-${p.key}.html`} aria-label={`Ver playera ${p.name}`}><img src={photo.displaySrc} alt={`${p.name} · ${photo.alt}`} width={photo.width} height={photo.height} decoding="async" loading="eager" fetchpriority={i===0?'high':'auto'}/></a>
+          <span class="featured-note" aria-hidden="true">{tone==='pixel'?'PIXEL ART':tone==='gothic'?'ARTE GÓTICO':'TRAZOS ROJOS'} / OVERSIZE</span>
+        </article>;
+      })}
+    </div>
+    <div class="featured-controls" hidden>
+      <div class="featured-pagination"><span class="featured-count" aria-hidden="true">01 / 03</span><div class="featured-dots" role="group" aria-label="Elegir diseño destacado">{featured.map(({product:p},i)=><button type="button" data-featured-index={i} aria-label={`Mostrar ${p.name}`} aria-pressed={String(i===0)}><span></span></button>)}</div></div>
+      <div class="featured-navigation"><button type="button" data-featured-prev aria-label="Diseño anterior">←</button><button type="button" data-featured-toggle aria-label="Pausar presentación">Pausar <span aria-hidden="true">Ⅱ</span></button><button type="button" data-featured-next aria-label="Diseño siguiente">→</button></div>
+    </div>
+  </div>
 </section>

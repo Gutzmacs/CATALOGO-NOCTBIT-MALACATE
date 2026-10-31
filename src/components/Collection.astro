@@ -6,16 +6,16 @@ import {coverPhotoFor as coverFor} from '../lib/product-photos.js';
   <div class="section-heading" id="elige"><div><p class="eyebrow">ENCUENTRA TU DISEÑO</p><h2>Elige tu playera.</h2></div><p>Elige el diseño que te guste. Después selecciona tu talla para ver el precio exacto.</p></div>
   <div class="gallery-toolbar">
     <div aria-label="Filtrar galería por diseñador" class="designer-filters" role="group"><button aria-pressed="true" data-designer="all" type="button">Ver todos</button><button aria-pressed="false" data-designer="seb" type="button">NOCTBIT <span>{products.filter(p=>p.author==='Seb').length}</span></button><button aria-pressed="false" data-designer="nai" type="button">Malacate <span>{products.filter(p=>p.author==='Nai').length}</span></button></div>
-    <div class="gallery-tools"><p id="designer-status" role="status">{products.length} diseños · NOCTBIT + Malacate</p><button aria-label="Silenciar sonido de las colecciones" aria-pressed="true" class="collection-sound" id="collection-sound" type="button">♪ Sonido activado</button></div>
+    <div class="gallery-tools"><p id="designer-status" role="status">{products.length} diseños · NOCTBIT + Malacate</p></div>
   </div>
   <div class="product-grid" id="designer-gallery">
     {products.map(p => <article class="product" data-owner={p.author==='Nai'?'nai':'seb'}>
-      <p class="designer-credit">{p.brand} · Por {p.author}</p>
-      <div class="product-top"><h3><a href={'ficha-'+p.key+'.html'}>{p.name}</a></h3></div>
       <a aria-label={'Ver playera '+p.name} class={'product-image '+p.key} href={'ficha-'+p.key+'.html'}>
         <img alt={p.name+' · '+coverFor(p).alt} loading="lazy" decoding="async" src={coverFor(p).displaySrc} width={coverFor(p).width} height={coverFor(p).height}/>
         {coverFor(p).imageType && coverFor(p).imageType !== 'Mockup' && <span class="image-label">{coverFor(p).imageType}</span>}<span aria-hidden="true" class="zoom">↗</span>
       </a>
+      <div class="product-summary"><p class="designer-credit">{p.brand} · Por {p.author}</p>
+      <div class="product-top"><h3><a href={'ficha-'+p.key+'.html'}>{p.name}</a></h3></div></div>
       {p.key==='muertos'&&<span class="season-tag">De temporada · Día de Muertos</span>}
       <a class="product-sheet-link" href={'ficha-'+p.key+'.html'}>Elegir playera <span aria-hidden="true">↗</span></a>
     </article>)}

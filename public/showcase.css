@@ -1,0 +1,78 @@
+/* A small campaign window, followed by a still, browsable clothing catalog. */
+.featured{padding:28px 6% 0;scroll-margin-top:110px;background:var(--ink)}
+.featured-intro{display:flex;justify-content:space-between;align-items:end;gap:24px;max-width:1320px;margin:0 auto 22px}
+.featured-intro .eyebrow{margin:0 0 6px;font-size:12px}
+.featured-intro h1{font:400 clamp(26px,3vw,40px)/1.15 var(--sans);letter-spacing:-.8px;margin:0}
+.featured-intro>p{max-width:270px;color:var(--muted);font:15px/1.6 var(--sans);margin:0}
+.featured-carousel{position:relative;max-width:1320px;margin:auto;border:1px solid var(--line);overflow:hidden;touch-action:pan-y pinch-zoom}
+.featured-stage{position:relative;background:#10131a;isolation:isolate}
+.featured-slide{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:5%;align-items:center;height:390px;isolation:isolate;overflow:hidden;padding:24px 8%;color:#f8f4ec;--feature-accent:#efbd84;animation:featured-enter .65s ease both}
+.featured-slide[hidden]{display:none}
+.featured-atmosphere{position:absolute;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(90deg,#091416e8,#0a1419b3 55%,#14141ebd),url('assets/seb-moon-landscape.webp') center 44%/cover}
+.featured-atmosphere::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 70%,#dfc38b08),repeating-linear-gradient(0deg,transparent,transparent 31px,#b8dab308 32px);opacity:.7}
+.featured-atmosphere i{position:absolute;display:block;background:#e7d29c;opacity:.23;width:4px;height:4px;left:42%;top:28%;box-shadow:50px 70px #e7d29c66,90px -30px #e7d29c55,-60px 140px #e7d29c66;animation:featured-pixels 9s ease-in-out infinite alternate}
+.featured-atmosphere i:nth-child(2){left:9%;top:70%;animation-delay:-4s;opacity:.14}
+.featured-atmosphere i:nth-child(3){left:78%;top:45%;animation-delay:-2s}
+.featured-slide[data-tone=gothic]{--feature-accent:#ead5bd}
+.featured-slide[data-tone=gothic] .featured-atmosphere{background:linear-gradient(90deg,#14101be8,#11101ab3 55%,#16121bba),url('assets/background-cathedral.webp') center 55%/cover}
+.featured-slide[data-tone=gothic] .featured-atmosphere::after{background:radial-gradient(ellipse at 42% 65%,#c8b5ed20,transparent 55%);animation:featured-mist 12s ease-in-out infinite alternate}
+.featured-slide[data-tone=gothic] .featured-atmosphere i{background:#d1b9f0;box-shadow:50px 70px #d1b9f066,90px -30px #d1b9f055,-60px 140px #d1b9f066}
+.featured-slide[data-tone=red]{--feature-accent:#ffccae}
+.featured-slide[data-tone=red] .featured-atmosphere{background:radial-gradient(ellipse at 75% 20%,#9d4d3b55,transparent 65%),linear-gradient(115deg,#271410,#4b2320 65%,#251617)}
+.featured-slide[data-tone=red] .featured-atmosphere::after{inset:10% 26% -40% 36%;border:1px solid #edb2a12e;border-radius:50%;background:repeating-radial-gradient(circle at center,transparent 0 38px,#f3bd9b13 39px 40px);transform:rotate(-25deg)}
+.featured-slide[data-tone=red] .featured-atmosphere i{width:11px;height:6px;border-radius:70% 5% 70% 15%;background:#f4ad9b;box-shadow:80px 45px #f4ad9b66,-65px 100px #f4ad9b55;transform:rotate(-20deg)}
+.featured-copy{position:relative;z-index:1;max-width:450px}
+.featured-brand{font:700 14px/1.5 var(--sans);letter-spacing:1.7px;color:var(--feature-accent);margin:0 0 14px}
+.featured-brand span{font:11px var(--mono);letter-spacing:.7px;margin-left:12px;color:#eee4dc}
+.featured-copy h2{font:400 clamp(36px,4.6vw,64px)/1.03 var(--sans);letter-spacing:-1.6px;text-transform:none;margin:0 0 14px;max-width:440px}
+.featured-line{font:16px/1.6 var(--sans);margin:0 0 24px;color:#eee4dc}
+.featured-cta{white-space:nowrap;min-height:48px;background:var(--feature-accent);border-color:var(--feature-accent);color:#21181e;box-shadow:none;gap:42px;font-size:14px}
+.featured-cta:hover{background:#fff3e5;transform:none}
+.featured-photo{display:flex;align-items:center;justify-content:center;min-width:0;height:342px;position:relative}
+.featured-photo img{display:block;max-width:100%;width:auto;height:100%;object-fit:contain}
+.featured-photo img[src*='japones-front-hd']{object-view-box:inset(0 15.77% 0 0)}
+.featured-note{position:absolute;right:18px;top:22px;writing-mode:vertical-rl;font:10px/1 var(--mono);letter-spacing:1.4px;color:#ede3d3bf}
+.featured-controls{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:8px 18px;background:#12121c;color:#f4eede;border-top:1px solid #565065}
+.featured-pagination,.featured-navigation,.featured-dots{display:flex;align-items:center;gap:8px}
+.featured-count{font:12px/1.4 var(--mono);letter-spacing:1px;color:#d1cbd9;min-width:72px}
+.featured-controls button{display:flex;justify-content:center;align-items:center;min-width:44px;min-height:44px;padding:8px;border:1px solid transparent;background:none;color:inherit;font:14px var(--sans);border-radius:0}
+.featured-controls button:focus-visible,.featured-carousel:focus-visible{outline:2px solid #f1cf93;outline-offset:-3px}
+.featured-controls button:hover{border-color:#a69baf;color:#f9d49a}
+.featured-controls button:disabled{opacity:.4;cursor:default}
+.featured-dots button{padding:10px;gap:0}
+.featured-dots button span{height:3px;width:22px;display:block;background:#777080;transition:background .2s}
+.featured-dots button[aria-pressed=true] span{background:#f0cf95}
+.featured-navigation [data-featured-toggle]{gap:12px;padding-inline:12px;min-width:108px;border-inline:1px solid #4a4355}
+.featured-navigation>button:first-child,.featured-navigation>button:last-child{font-size:22px}
+.featured-carousel[data-playing=false] .featured-atmosphere i,.featured-carousel[data-playing=false] .featured-atmosphere::after,.featured-carousel[data-playing=false] .featured-photo img{animation-play-state:paused}
+@keyframes featured-enter{from{opacity:.3}to{opacity:1}}
+@keyframes featured-pixels{from{translate:0 0;opacity:.1}to{translate:8px -18px;opacity:.34}}
+@keyframes featured-mist{from{translate:-3% 0;opacity:.4}to{translate:4% 0;opacity:.9}}
+/* Stable four-column catalog on desktop; readable two-column cards on mobile. */
+.collection.section{padding:36px 6% 46px;background:var(--ink)}
+.collection .section-heading{margin-bottom:18px}
+.collection .section-heading h2{font:400 30px/1.2 var(--sans);letter-spacing:-.5px;text-transform:none}
+.collection .section-heading .eyebrow{margin-bottom:6px}
+.collection .section-heading>p{font-size:15px;max-width:430px}
+.collection .gallery-toolbar{margin-bottom:22px;padding-bottom:16px;gap:14px}
+.collection .product-grid,:root[data-designer=nai] .collection .product-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 20px;align-items:stretch}
+.collection .product{padding:0;border:0;background:transparent;box-shadow:none;min-width:0}
+.collection .product-image,:root[data-designer=nai] .collection .product-image{height:auto;aspect-ratio:4/5;flex-shrink:0}
+.collection .product-summary{padding:12px 0 4px}
+.collection .designer-credit{font:12px/1.5 var(--sans);letter-spacing:.2px;text-transform:none;color:var(--muted);margin:0 0 5px;min-height:0}
+.collection .product .product-top{min-height:0;margin:0 0 8px}
+.collection .product-top h3{font:400 20px/1.3 var(--sans);overflow-wrap:anywhere}
+.collection .product-sheet-link{font:600 14px/1.5 var(--sans);padding:10px 0;min-height:44px;border-top:1px solid var(--line);margin-top:auto}
+.collection .product>.season-tag{font-size:12px;margin:0 0 8px}
+.collection .zoom{width:28px;line-height:28px;font-size:20px;top:8px;right:8px;text-align:center}
+@media(min-width:1500px){.featured,.collection.section{padding-inline:max(6%,calc((100vw - 1320px)/2))}}
+@media(max-width:1100px) and (min-width:701px){.collection .product-grid,:root[data-designer=nai] .collection .product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.featured-slide{padding-inline:6%;gap:4%;height:350px}.featured-photo{height:302px}}
+@media(max-width:700px){
+ .featured{padding:22px 5% 0;scroll-margin-top:150px}
+ .featured-intro{display:block;margin-bottom:18px}.featured-intro h1{font-size:27px;letter-spacing:-.6px}.featured-intro>p{font-size:14px;margin-top:8px;max-width:none}.featured-intro>p br{display:none}
+ .featured-slide{height:320px;grid-template-columns:1fr 1fr;gap:10px;padding:22px 18px}.featured-copy h2{font-size:32px;letter-spacing:-.8px;line-height:1.05;margin-bottom:12px}.featured-line{font-size:14px;line-height:1.5;margin-bottom:18px}.featured-brand{font-size:12px;letter-spacing:1px;margin-bottom:12px}.featured-brand span{display:block;font-size:10px;margin:3px 0 0}.featured-photo{height:264px}.featured-note{display:none}.featured-cta{padding:10px 12px;gap:12px;font-size:14px;width:100%;max-width:160px}
+ .featured-controls{gap:8px;padding:6px 10px;flex-wrap:wrap}.featured-count{display:none}.featured-pagination{gap:0}.featured-navigation{gap:0}.featured-navigation [data-featured-toggle]{min-width:98px;padding-inline:10px}.featured-dots{gap:0}.featured-dots button{min-width:36px;padding:8px}.featured-dots button span{width:20px}
+ .collection.section{padding:28px 5% 38px}.collection .section-heading h2{font-size:26px}.collection .section-heading>p{margin-top:8px;font-size:15px}.collection .product-grid,:root[data-designer=nai] .collection .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}.collection .designer-filters button{white-space:nowrap;padding-inline:4px}.collection .designer-credit{font-size:12px;min-height:36px}.collection .product-top h3{font-size:17px;line-height:1.35}.collection .product-summary{padding-top:10px}.collection .product-sheet-link{font-size:14px}.collection .product>.season-tag{font-size:12px}
+}
+@media(max-width:370px){.featured-cta{font-size:13px;gap:8px}.collection .designer-filters button span{display:none}.featured-slide{padding:18px 12px;gap:8px}.featured-copy h2{font-size:27px}.featured-photo{height:240px}.featured-controls{justify-content:center}.featured-pagination{width:100%;justify-content:center}.featured-navigation{justify-content:center}.collection .designer-credit{font-size:12px}.collection .product-top h3{font-size:16px}.collection .product-grid,:root[data-designer=nai] .collection .product-grid{gap:20px 12px}}
+@media(prefers-reduced-motion:reduce){.featured-slide,.featured-photo img,.featured-atmosphere i,.featured-atmosphere::after{animation:none!important}.featured-dots button span{transition:none}}

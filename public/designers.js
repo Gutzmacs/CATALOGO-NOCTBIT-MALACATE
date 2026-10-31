@@ -1,40 +1,14 @@
 'use strict';
 (() => {
   const root = document.documentElement;
-  const cards = [...document.querySelectorAll('[data-owner]')];
+  const cards = [...document.querySelectorAll('.product[data-owner]')];
   const controls = [...document.querySelectorAll('[data-designer]')];
   const status = document.querySelector('#designer-status');
   const grid = document.querySelector('#designer-gallery');
-  const heroImage = document.querySelector('.hero-photos img');
-  const heroPhotoLink = document.querySelector('.hero-photos');
-  const heroTitle = document.querySelector('.hero-art .art-top span:first-child');
-  const heroCategory = document.querySelector('.hero-art .art-top span:last-child');
-  const heroButton = document.querySelector('.hero-inspect');
-  const featured = {
-    seb: {
-      image: 'assets/ninja-back-hd.webp', title: 'NINJA', category: 'NOCTBIT / SEB', gallery: 'ninja',
-      alt: 'Vista trasera de la playera Ninja de Seb, con guerrero y bufanda roja',
-      label: 'Ver playera Ninja, diseño de Seb'
-    },
-    nai: {
-      image: 'assets/japones-front-hd.webp', title: 'JAPONÉS ROJO', category: 'MALACATE / NAI', gallery: 'japones',
-      alt: 'Playera negra de Nai con dibujos rojos, flores y gato de la fortuna, vista frontal con modelo',
-      label: 'Ver playera Japonés Rojo, diseño de Nai'
-    }
-  };
   const colors = { all: '#0b0b18', seb: '#110d23', nai: '#24130f' };
   function chooseDesigner(owner, remember = true) {
     if (!['all', 'seb', 'nai'].includes(owner)) owner = 'all';
     root.dataset.designer = owner;
-    const cover = featured[owner === 'nai' ? 'nai' : 'seb'];
-    heroImage.src = cover.image;
-    heroImage.alt = cover.alt;
-    heroTitle.textContent = cover.title;
-    heroCategory.textContent = cover.category;
-    heroButton.href = 'ficha-' + cover.gallery + '.html';
-    heroPhotoLink.href = heroButton.href;
-    heroPhotoLink.setAttribute('aria-label', cover.label);
-    heroButton.setAttribute('aria-label', cover.label);
     cards.forEach(card => { card.hidden = owner !== 'all' && card.dataset.owner !== owner; });
     controls.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.designer === owner)));
     const activeLabel = document.querySelector('#active-collection');
@@ -49,7 +23,7 @@
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && grid.animate) {
       grid.animate([{ opacity: .35, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 280, easing: 'ease-out' });
     }
-    if (remember) window.CollectionScenes?.play(owner);
+    document.dispatchEvent(new CustomEvent('catalog:designer', {detail: {owner}}));
     if (remember) { try { localStorage.setItem('sebnai-designer', owner); } catch {} }
   }
   controls.forEach(button => button.addEventListener('click', () => chooseDesigner(button.dataset.designer)));
